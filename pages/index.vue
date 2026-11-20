@@ -1,7 +1,10 @@
 <template>
     <div class="landing-page grid-container">
         <div class="image-container">
-            <img class="profile-pic" src="~/assets/images/Akhil.png" alt="profile">
+            <!-- the slide-in waits until the photo has actually loaded -->
+            <img ref="photo" class="profile-pic" :class="{ loaded: photoReady }" src="~/assets/images/Akhil.jpg"
+                alt="Akhil Srinivas P" width="900" height="833" decoding="async"
+                @load="photoReady = true" @error="photoReady = true">
         </div>
         <div class="text-container">
             <h1 class="roles" :aria-label="`I am ${messages.join(', ')}`">
@@ -34,6 +37,14 @@ const messages = [
     "working with AWS!",
 ]
 const { prefixText, typedText } = useTypewriter("I am ", messages)
+
+// The photo can finish loading before the app starts (then @load never fires here), so also
+// check once mounted. A failed load still releases the animation so the alt text shows.
+const photo = ref<HTMLImageElement | null>(null)
+const photoReady = ref(false)
+onMounted(() => {
+    if (photo.value?.complete) photoReady.value = true
+})
 </script>
   
 <style scoped>
@@ -50,9 +61,14 @@ const { prefixText, typedText } = useTypewriter("I am ", messages)
     border: 5px solid var(--color-logo-plate);
     box-shadow: var(--shadow-glow);
     transition: 0.2s;
+    height: auto;
     opacity: 0;
-    animation: reveal 1s forwards;
+    animation: reveal 1s forwards paused;
     transform: translateX(-100px);
+}
+
+.profile-pic.loaded {
+    animation-play-state: running;
 }
 
 .text-container > :not(:last-child) {
