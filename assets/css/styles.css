@@ -23,6 +23,13 @@ body {
   min-height: 100vh;
 }
 
+/* Phones: leave room after the last tile for the "keep scrolling for menu" hint. */
+@media (max-width: 899px) {
+  .page-bg {
+    padding-bottom: 7rem;
+  }
+}
+
 /* The reset makes every svg display:block; keep icons inline. */
 svg.iconify {
   display: inline-block;

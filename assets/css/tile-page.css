@@ -36,3 +36,10 @@
 		transform: none;
 	}
 }
+
+/* Phones: room after the last tile for the "keep scrolling for menu" hint (as on every page). */
+@media (max-width: 899px) {
+	.tile-page {
+		padding-bottom: 7rem;
+	}
+}
