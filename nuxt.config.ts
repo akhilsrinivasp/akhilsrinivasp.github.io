@@ -8,13 +8,15 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'Akhil - Portfolio',
+      title: 'Akhil Srinivas Parimala',
       htmlAttrs: { lang: 'en' },
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'color-scheme', content: 'dark light' },
         { name: 'theme-color', content: '#f4f5f7' },
+        { property: 'og:title', content: 'Akhil Srinivas Parimala' },
+        { property: 'og:site_name', content: 'Akhil Srinivas Parimala' },
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: (process.env.NUXT_APP_BASE_URL || '/') + 'favicon.ico' },
