@@ -31,15 +31,31 @@ svg.iconify {
 @keyframes scroll-reveal {
   from {
     opacity: 0;
-    transform: translateX(var(--reveal-x, 0)) translateY(40px) scale(0.96);
+    filter: blur(6px);
+    transform: perspective(1200px) translateX(var(--reveal-x, 0)) translateY(90px) rotateX(22deg)
+      rotateY(var(--reveal-tilt, 0deg)) scale(0.88);
+  }
+  60% {
+    opacity: 1;
+    filter: blur(0);
   }
   to {
     opacity: 1;
+    filter: none;
     transform: none;
   }
 }
 
+/* As a tile leaves under the header it sinks back slightly instead of just sliding off. */
+@keyframes scroll-recede {
+  to {
+    opacity: 0.35;
+    transform: perspective(1200px) rotateX(-8deg) scale(0.94);
+  }
+}
+
 .scroll-reveal {
+  transform-origin: 50% 100%;
   animation: scroll-reveal 1s cubic-bezier(0.075, 0.82, 0.165, 1) both;
 }
 
@@ -61,36 +77,80 @@ svg.iconify {
   }
 }
 
+.scroll-reveal:nth-child(odd) {
+  --reveal-tilt: -6deg;
+}
+
+.scroll-reveal:nth-child(even) {
+  --reveal-tilt: 6deg;
+}
+
+/* Tied to scroll position: tiles rise, untilt and sharpen as they enter, and sink back
+   as they leave under the header. */
 @supports (animation-timeline: view()) {
   .scroll-reveal {
-    animation-timing-function: ease-out;
-    animation-duration: auto;
-    animation-timeline: view();
-    animation-range: entry 0% cover 30%;
+    animation:
+      scroll-reveal linear both,
+      scroll-recede linear forwards;
+    animation-timeline: view(), view();
+    animation-range:
+      entry 0% entry 100%,
+      exit 40% exit 100%;
   }
 }
 
-/* ---------- Page transitions (View Transitions API) ---------- */
+/* One-shot entrance used by the nav, the mobile menu and a few headings.
+   Elements start offset/hidden in their own CSS and settle here. */
+@keyframes reveal {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- Page transitions (View Transitions API) ----------
+   The site behaves like one shell: header and footer nav are captured on their own
+   and shown live, so only the page content cross-fades underneath them. */
+.site-header {
+  view-transition-name: site-header;
+}
+
+.site-footer {
+  view-transition-name: site-footer;
+}
+
+::view-transition-old(site-header),
+::view-transition-old(site-footer) {
+  display: none;
+}
+
+::view-transition-new(site-header),
+::view-transition-new(site-footer) {
+  animation: none;
+}
+
+::view-transition-group(site-header),
+::view-transition-group(site-footer) {
+  animation: none;
+}
+
 ::view-transition-old(root) {
-  animation: vt-out 0.25s ease-in both;
+  animation: vt-fade-out 0.18s ease-out both;
 }
 
 ::view-transition-new(root) {
-  animation: vt-in 0.4s cubic-bezier(0.075, 0.82, 0.165, 1) both;
+  animation: vt-fade-in 0.3s ease-in both;
 }
 
-@keyframes vt-out {
+@keyframes vt-fade-out {
   to {
     opacity: 0;
-    transform: scale(0.98);
-    filter: blur(4px);
   }
 }
 
-@keyframes vt-in {
+@keyframes vt-fade-in {
   from {
     opacity: 0;
-    transform: translateY(24px);
   }
 }
 

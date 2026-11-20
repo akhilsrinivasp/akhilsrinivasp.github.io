@@ -2,14 +2,14 @@
     <div>
         <!-- Soft teal spotlight that follows the cursor (desktop pointers only). -->
         <div v-if="showSpotlight" class="mouse-light" :style="spotlightStyle" aria-hidden="true"></div>
-        <header class="">
+        <header class="site-header">
             <MobileNavbar class="mobile" v-if="isMobile" />
             <SocialProfile class="desktop" v-else />
         </header>
         <div>
             <slot class="slot" />
         </div>
-        <footer>
+        <footer class="site-footer">
             <NavBar class="desktop" v-if="!isMobile" />
         </footer>
     </div>

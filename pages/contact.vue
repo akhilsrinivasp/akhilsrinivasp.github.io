@@ -20,7 +20,7 @@ export default {
     }
 }
 </script>
-<style>
+<style scoped>
 .contact-page {
     margin: 0%;
     display: flex;
@@ -36,7 +36,7 @@ export default {
     animation: reveal 0.3s forwards;
     transform: translateY(100px);
 
-    font-size: var(--text-12xl);
+    font-size: var(--text-5xl);
     margin: 0 0 25px 0;
 }
 
@@ -59,13 +59,6 @@ export default {
     animation: reveal 0.5s forwards;
     transform: translateY(-100px);
     animation-delay: 0.5s;
-}
-
-@keyframes reveal {
-    100% {
-        opacity: 1;
-        transform: translateY(0px);
-    }
 }
 
 @media (min-width: 1024px) {

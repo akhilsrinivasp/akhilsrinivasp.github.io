@@ -1,11 +1,11 @@
 <template>
     <div>
         <div class="navbar" :class="{ 'navbar-blue': scrolled }">
-            <Icon id="toggle" name="grommet-icons:braille" @click="toggleDropdown" />
+            <Icon class="toggle" name="grommet-icons:braille" @click="toggleDropdown" />
             <NuxtLink class='home-link' to="/">Akhil</NuxtLink>
         </div>
         <div ref="dropDown" id="dropdown" :style="{ display: dropdownVisible ? 'block' : 'none' }">
-            <Icon id="toggle" name="simple-line-icons:arrow-up" @click="toggleDropdown" />
+            <Icon class="toggle" name="simple-line-icons:arrow-up" @click="toggleDropdown" />
             <br>
             <NuxtLink class='link' @click="toggleDropdown" to="/">Home</NuxtLink> <br>
             <NuxtLink class='link' @click="toggleDropdown" to="/education">Education</NuxtLink> <br>
@@ -30,7 +30,7 @@
                 </a>
             </div>
             <br>
-            <Icon id="toggle" name="grommet-icons:close" @click="toggleDropdown" />
+            <Icon class="toggle" name="grommet-icons:close" @click="toggleDropdown" />
         </div>
     </div>
 </template>
@@ -40,7 +40,7 @@ const toggleDropdown = () => { dropdownVisible.value = !dropdownVisible.value }
 const { y } = useWindowScroll()
 const scrolled = computed(() => y.value > 40)
 </script>
-<style>
+<style scoped>
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -53,26 +53,15 @@ const scrolled = computed(() => y.value > 40)
     transform: translateX(100px);
 }
 
-@keyframes reveal {
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
 .navbar-blue {
     background-color: var(--color-bg);
 }
 
-#toggle {
+.toggle {
     cursor: pointer;
     width: 9%;
     height: 9%;
     margin: 2.5% 5%;
-}
-
-br {
-    margin-top: 4%;
 }
 
 /* add transition to entry of dropdown */
@@ -88,7 +77,7 @@ br {
 
     text-align: center;
     font-family: var(--font-body);
-    font-size: var(--text-8xl);
+    font-size: var(--text-2xl);
     color: var(--color-text-inverse);
     padding-top: 5%;
     padding-bottom: 5%;
@@ -99,27 +88,9 @@ br {
     transform: translateY(-100px);
 }
 
-@keyframes reveal {
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.dropdown-link {
-    color: var(--color-text-inverse);
-    transition: 0.2s;
-    margin: 0;
-    position: relative;
-    opacity: 0;
-    animation: reveal 1s forwards;
-    transform: translateY(-100px);
-    animation-delay: 0.2s;
-}
-
 .home-link {
     font-family: var(--font-script);
-    font-size: var(--text-12xl);
+    font-size: var(--text-5xl);
     color: var(--color-accent);
     margin: 2.5% 6% 0;
     text-align: center;

@@ -16,21 +16,21 @@
             window.open(`mailto:${mail}`);
         }; 
 </script>
-<style>
+<style scoped>
 .contact-tile {
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  width: 400px;
+  width: min(400px, 90vw);
   padding: 6%;
   margin: 5% 0%;
-  font-size: var(--text-sm);
+  font-size: var(--text-xs);
   transition: all 0.2s;
 }
 
 .contact-tile:hover {
-  width: 410px;
+  width: min(410px, 92vw);
   font-size: var(--text-base);
   background-color: var(--color-surface-hover);
 }
@@ -50,7 +50,7 @@
 
   .contact-tile:hover {
     width: 700px;
-    font-size: var(--text-4xl);
+    font-size: var(--text-xl);
   }
 }
 </style>

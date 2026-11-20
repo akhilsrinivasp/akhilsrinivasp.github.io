@@ -24,14 +24,14 @@ export default {
             margin: 13%;
         }
         .heading {
-        font-size: var(--text-11xl);
+        font-size: var(--text-4xl);
         font-weight: var(--weight-bold);
         margin-bottom: 2%;
         font-family: var(--font-body);
         font-weight: var(--weight-medium);
     }
     .para {
-        font-size: var(--text-4xl);
+        font-size: var(--text-xl);
         font-weight: var(--weight-medium);
         font-family: var(--font-body);
     }
@@ -43,7 +43,7 @@ export default {
             margin-top: 25%;
         }  
         .heading {
-        font-size: var(--text-8xl);
+        font-size: var(--text-2xl);
         font-weight: var(--weight-bold);
         margin-bottom: 2%;
         font-family: var(--font-body);

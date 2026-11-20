@@ -27,7 +27,7 @@ type education_details = {
 }; 
 const education: education_details[] = educationData;
 </script>
-<style>
+<style scoped>
 .education {
 	display: flex;
 	flex-direction: column;
@@ -63,7 +63,7 @@ const education: education_details[] = educationData;
 	.mobile-title {
 		font-family: var(--font-body);
 		font-weight: var(--weight-regular);
-		font-size: var(--text-10xl);
+		font-size: var(--text-4xl);
 		letter-spacing: 0.4rem;
 		color: var(--color-text);
 		margin: 2% 0 4%;

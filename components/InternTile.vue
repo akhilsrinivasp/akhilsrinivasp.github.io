@@ -51,12 +51,12 @@ type intern_details = {
 }
 
 .company-org {
-    font-size: var(--text-4xl);
+    font-size: var(--text-xl);
     line-height: var(--leading-normal);
 }
 
 .company-role {
-    font-size: var(--text-7xl);
+    font-size: var(--text-2xl);
     line-height: var(--leading-snug);
 }
 
@@ -65,12 +65,10 @@ type intern_details = {
     margin: 2% 0 4%;
     /* add transition in such a way that if the element expands, it does it smoothly */
     transition: all 0.5s ease;
-    animation: reveal 0.5ms forwards;
 }
 .tile:hover {
     background-color: var(--color-surface-inverse);
     color: var(--color-bg);
-    transform: scale(1.05);
 }
 .intern-tile {
     display: flex;
@@ -95,7 +93,8 @@ type intern_details = {
 }
 .intern-details-container { 
     padding: 40px;
-    width: 500px;
+    flex: 1;
+    max-width: 500px;
 }
 
 .intern-details-container > div {
@@ -105,12 +104,6 @@ type intern_details = {
     opacity: 0;
 }
 
-@keyframes reveal {
-    100% {
-        transform: translateX(0px);
-        opacity: 1;
-    }
-}
 
 .work-name {
     font-weight: var(--weight-regular);
@@ -121,5 +114,32 @@ type intern_details = {
     animation: reveal 1s forwards;
     transform: translateY(-20px);
     opacity: 0;
+}
+
+.company-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+@media (max-width: 640px) {
+    .intern-tile {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 30px 10px;
+    }
+
+    .company-logo {
+        width: 150px;
+        height: 150px;
+        margin-top: 0;
+    }
+
+    .intern-details-container {
+        padding: 20px;
+        max-width: none;
+        width: 100%;
+    }
 }
 </style>

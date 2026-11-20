@@ -22,27 +22,19 @@
   --weight-semibold: 600;
   --weight-bold: 700;
 
-  /* Font-size scale, smallest to largest. These are the exact sizes the site already
-     uses; neighbours like 1.2/1.25/1.3rem could be merged later as a design change. */
-  --text-xs: 0.9rem;
-  --text-sm: 0.95rem;
-  --text-base: 1rem;
-  --text-md: 1.125rem;
-  --text-lg: 1.2rem;
-  --text-xl: 1.25rem;
-  --text-2xl: 1.3rem;
-  --text-3xl: 1.4rem;
-  --text-4xl: 1.5rem;
-  --text-5xl: 1.7rem;
-  --text-6xl: 1.8rem;
-  --text-7xl: 1.875rem;
-  --text-8xl: 2rem;
-  --text-9xl: 2.25rem;
-  --text-10xl: 2.5rem;
-  --text-11xl: 2.7rem;
-  --text-12xl: 3rem;
-  --text-13xl: 3.5rem;
-  --text-14xl: 4rem;
+  /* Font-size scale: 11 steps, roughly a 1.2 ratio. Pick the nearest step rather
+     than adding a new size. */
+  --text-xs: 0.9rem;    /* tags, small print */
+  --text-base: 1rem;    /* body copy */
+  --text-md: 1.125rem;  /* typewriter line on phones */
+  --text-lg: 1.25rem;   /* sub-headings, contact tile */
+  --text-xl: 1.5rem;    /* nav links, company names */
+  --text-2xl: 1.875rem; /* active nav link, roles, eyebrow headings */
+  --text-3xl: 2.25rem;  /* tile titles */
+  --text-4xl: 2.5rem;   /* mobile page titles, hovered tile titles */
+  --text-5xl: 3rem;     /* wordmark, section headings */
+  --text-6xl: 3.5rem;   /* wordmark hover */
+  --text-7xl: 4rem;     /* wordmark on the home page */
 
   /* Line heights paired with the heading sizes */
   --leading-none: 1;

@@ -56,16 +56,10 @@ const scrolled = computed(() => y.value > 35)
     animation-delay: 1s;
 }
 
-@keyframes reveal {
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
 
 .home-link {
     font-family: var(--font-script);
-    font-size: var(--text-12xl);
+    font-size: var(--text-5xl);
     color: var(--color-accent);
     padding: 0 2%;
     padding-top: 0%;
@@ -76,11 +70,11 @@ const scrolled = computed(() => y.value > 35)
 }
 
 .home-link:hover {
-    font-size: var(--text-13xl);
+    font-size: var(--text-6xl);
 }
 
 .router-link-exact-active {
-    font-size: var(--text-14xl);
+    font-size: var(--text-7xl);
 }
 
 .icon-class {

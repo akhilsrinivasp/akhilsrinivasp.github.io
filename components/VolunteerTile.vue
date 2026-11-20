@@ -43,7 +43,7 @@ const hover = ref(false)
 }
 
 .company-org {
-    font-size: var(--text-4xl);
+    font-size: var(--text-xl);
     line-height: var(--leading-normal);
 }
 
@@ -51,13 +51,11 @@ const hover = ref(false)
     width: 100%;
     margin: 2% 0 4%;
     transition: all 0.5s ease;
-    animation: reveal 0.5ms forwards;
 }
 
 .tile:hover {
     background-color: var(--color-surface-inverse);
     color: var(--color-bg);
-    transform: scale(1.05);
 }
 
 .volunteer-tile {
@@ -90,7 +88,8 @@ const hover = ref(false)
 
 .details-container {
     padding: 40px;
-    width: 500px;
+    flex: 1;
+    max-width: 500px;
 }
 
 .details-container > div {
@@ -101,7 +100,7 @@ const hover = ref(false)
 }
 
 .role-name {
-    font-size: var(--text-xl);
+    font-size: var(--text-lg);
     line-height: var(--leading-relaxed);
     font-weight: var(--weight-semibold);
 }
@@ -116,12 +115,6 @@ const hover = ref(false)
     margin-top: 4px;
 }
 
-@keyframes reveal {
-    100% {
-        transform: translateX(0px);
-        opacity: 1;
-    }
-}
 
 @media (max-width: 640px) {
     .volunteer-tile {
@@ -139,6 +132,7 @@ const hover = ref(false)
 
     .details-container {
         padding: 20px;
+        max-width: none;
         width: 100%;
     }
 }

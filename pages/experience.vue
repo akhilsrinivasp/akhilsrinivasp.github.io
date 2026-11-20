@@ -4,11 +4,11 @@
         <div class="internship">
             <h1 class="intern-heading heading-eyebrow">EXPERIENCE</h1>
             <h1 class="intern-heading heading-section">INTERN</h1>
-            <div v-for="intern in interns" class="intern-tile scroll-reveal">
+            <div v-for="intern in interns" class="exp-item scroll-reveal">
                 <InternTile :intern="intern" />
             </div>
             <h1 class="intern-heading heading-section volunteer-heading">VOLUNTEER</h1>
-            <div v-for="org in volunteering" class="intern-tile scroll-reveal">
+            <div v-for="org in volunteering" class="exp-item scroll-reveal">
                 <VolunteerTile :volunteer="org" />
             </div>
         </div>
@@ -30,7 +30,7 @@
     const interns: intern_details[] = internData
     const volunteering = volunteerData
 </script>
-<style>
+<style scoped>
     .internship {
         display: flex;
         flex-direction: column;
@@ -49,12 +49,12 @@
     }
 
     .heading-eyebrow {
-        font-size: var(--text-7xl);
+        font-size: var(--text-2xl);
         line-height: var(--leading-snug);
     }
 
     .heading-section {
-        font-size: var(--text-12xl);
+        font-size: var(--text-5xl);
         line-height: var(--leading-none);
     }
 
@@ -62,12 +62,17 @@
         margin-top: 4%;
     }
 
-    @media (max-width: 1024px) {
-        
+    .exp-item {
+        width: min(900px, 100% - 2rem);
     }
-    @media (min-width: 1024px) {
-        .intern-tile{
-            width: 900px;
+
+    @media (max-width: 640px) {
+        .internship {
+            margin-top: 6rem;
+        }
+
+        .intern-heading {
+            letter-spacing: 0.4rem;
         }
     }
 </style>

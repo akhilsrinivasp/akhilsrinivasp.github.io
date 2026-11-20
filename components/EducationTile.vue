@@ -31,7 +31,7 @@
 const { education: education } = defineProps(["education"]);
 </script>
 
-<style>
+<style scoped>
 .tile {
   display: flex;
   justify-content: center;
@@ -47,19 +47,19 @@ const { education: education } = defineProps(["education"]);
 
 /* Base heading sizes; the media queries below adjust them per breakpoint. */
 :where(.education-tile) .college {
-  font-size: var(--text-9xl);
+  font-size: var(--text-3xl);
   line-height: var(--leading-tight);
   font-weight: var(--weight-medium);
 }
 
 :where(.education-tile) .degree {
-  font-size: var(--text-4xl);
+  font-size: var(--text-xl);
   line-height: var(--leading-normal);
   font-weight: var(--weight-semibold);
 }
 
 :where(.education-tile) :is(.year, .grade, .course-title) {
-  font-size: var(--text-xl);
+  font-size: var(--text-lg);
   line-height: var(--leading-relaxed);
   font-weight: var(--weight-medium);
 }
@@ -104,17 +104,17 @@ const { education: education } = defineProps(["education"]);
   }
 
   .college:hover {
-    font-size: var(--text-11xl);
+    font-size: var(--text-4xl);
   }
   
   .degree:hover {
-    font-size: var(--text-5xl);
+    font-size: var(--text-2xl);
   }
 }
 
 @media (max-width: 1024px) {
   .education-tile {
-    width: 400px;
+    width: min(400px, 90vw);
     padding: 7%;
     margin: 5%;
     text-align: center;
@@ -129,12 +129,12 @@ const { education: education } = defineProps(["education"]);
 
   .college {
     padding-bottom: 5%;
-    font-size: var(--text-5xl);
+    font-size: var(--text-2xl);
   }
 
   .degree {
     padding-bottom: 5%;
-    font-size: var(--text-2xl);
+    font-size: var(--text-lg);
     font-weight: var(--weight-semibold);
   }
 
@@ -144,7 +144,7 @@ const { education: education } = defineProps(["education"]);
 
   .grade {
     padding-bottom: 4%;
-    font-size: var(--text-4xl);
+    font-size: var(--text-xl);
   }
 
   .dot {
@@ -153,7 +153,7 @@ const { education: education } = defineProps(["education"]);
 
   .course-title {
     padding-bottom: 1%;
-    font-size: var(--text-3xl);
+    font-size: var(--text-xl);
   }
 }
 </style>

@@ -36,7 +36,7 @@ import about from '~/assets/data/about.json'
 }
 
 .cert-title {
-	font-size: var(--text-xl);
+	font-size: var(--text-lg);
 	line-height: var(--leading-relaxed);
 	font-weight: var(--weight-medium);
 }

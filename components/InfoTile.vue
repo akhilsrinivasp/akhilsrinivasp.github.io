@@ -44,7 +44,7 @@ defineProps<{
 }
 
 .info-title {
-  font-size: var(--text-9xl);
+  font-size: var(--text-3xl);
   line-height: var(--leading-tight);
   font-weight: var(--weight-medium);
 }
@@ -57,7 +57,7 @@ defineProps<{
 }
 
 .info-subtitle {
-  font-size: var(--text-xl);
+  font-size: var(--text-lg);
   line-height: var(--leading-relaxed);
   font-weight: var(--weight-medium);
   padding-bottom: 1%;
@@ -99,7 +99,7 @@ defineProps<{
   }
 
   .title-link:hover .info-title {
-    font-size: var(--text-11xl);
+    font-size: var(--text-4xl);
   }
 
   .tag {
@@ -119,7 +119,7 @@ defineProps<{
 
   .info-title {
     padding-bottom: 5%;
-    font-size: var(--text-5xl);
+    font-size: var(--text-2xl);
   }
 
   .info-subtitle {

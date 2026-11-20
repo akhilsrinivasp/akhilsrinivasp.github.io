@@ -103,12 +103,6 @@ const { prefixText, typedText } = useTypewriter("I am ", messages)
     animation-delay: 0.3s;
 }
 
-@keyframes reveal {
-    100% {
-        opacity: 1;
-        transform: translateY(0px);
-    }
-}
 
 @media (min-width: 1024px) {
     .grid-container {
@@ -147,18 +141,18 @@ const { prefixText, typedText } = useTypewriter("I am ", messages)
 
     .default-text {
         color: var(--color-text);
-        font-size: var(--text-6xl);
+        font-size: var(--text-2xl);
         /* text-align: center; */
     }
 
     .typed-text {
         color: var(--color-text);
-        font-size: var(--text-10xl);
+        font-size: var(--text-4xl);
         /* text-align: center; */
     }
 
     .cursor {
-        font-size: var(--text-10xl);
+        font-size: var(--text-4xl);
     }
 
     .description {
@@ -214,18 +208,18 @@ const { prefixText, typedText } = useTypewriter("I am ", messages)
 
     .default-text {
         color: var(--color-text);
-        font-size: var(--text-4xl);
+        font-size: var(--text-xl);
         /* text-align: center; */
     }
 
     .typed-text {
         color: var(--color-text);
-        font-size: var(--text-8xl);
+        font-size: var(--text-2xl);
         /* text-align: center; */
     }
 
     .cursor {
-        font-size: var(--text-8xl);
+        font-size: var(--text-2xl);
     }
 
     .description {
