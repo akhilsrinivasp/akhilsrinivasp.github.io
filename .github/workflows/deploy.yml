@@ -1,3 +1,6 @@
+# Builds the Nuxt portfolio as a static site and publishes it to GitHub Pages.
+# One-time setup: repo Settings → Pages → Source: "GitHub Actions".
+# Content lives in assets/data/*.json; run locally with `npm install && npm run dev`.
 name: Deploy to GitHub Pages
 
 on:
