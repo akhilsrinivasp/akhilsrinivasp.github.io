@@ -153,13 +153,13 @@ useEventListener('wheel', (e: WheelEvent) => {
     left: 0;
     width: 100%;
     height: 1000px;
-    background-color: var(--color-surface-inverse);
+    background-color: var(--color-bg);
     z-index: 10;
 
     text-align: center;
     font-family: var(--font-body);
     font-size: var(--text-2xl);
-    color: var(--color-text-inverse);
+    color: var(--color-text);
     padding-top: 5%;
     padding-bottom: 5%;
     transition: 0.2s ease-in-out;
