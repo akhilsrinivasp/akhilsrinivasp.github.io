@@ -38,16 +38,10 @@ const { prefixText, typedText } = useTypewriter("I am ", messages)
   
 <style scoped>
 .landing-page {
-    background-color: var(--color-bg);
     height: 100vh;
     justify-content: center;
     align-items: center;
     padding: 15%;
-    background-image: url("~/assets/images/home-bg.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
 }
 
 .profile-pic {
@@ -112,16 +106,10 @@ const { prefixText, typedText } = useTypewriter("I am ", messages)
     }
 
     .landing-page {
-        background-color: var(--color-bg);
         height: 100vh;
         justify-content: center;
         align-items: center;
         padding: 15%;
-        background-image: url("~/assets/images/home-bg.png");
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
     }
 
     .profile-pic {
@@ -166,14 +154,11 @@ const { prefixText, typedText } = useTypewriter("I am ", messages)
 @media (max-width: 1024px) {
 
     .landing-page {
-        background-color: var(--color-bg);
-        height: 100vh;
-        padding: 10%;
-        background-image: url("~/assets/images/home-bg.png");
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
+        /* grow with the text instead of clipping it to one screen, and leave room at the
+           end so the last lines clear the "keep scrolling for menu" hint */
+        height: auto;
+        min-height: 100vh;
+        padding: 10% 10% 7rem;
     }
 
     .profile-pic {

@@ -22,6 +22,14 @@ export default defineNuxtConfig({
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
         { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Marck+Script&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap' },
       ],
+      // Hide tiles until plugins/reveal.ts has picked which to animate; never longer than 2.5s.
+      script: [
+        {
+          innerHTML:
+            "document.documentElement.classList.add('reveal-pending');setTimeout(function(){document.documentElement.classList.remove('reveal-pending')},2500)",
+          tagPosition: 'head',
+        },
+      ],
     },
   },
 

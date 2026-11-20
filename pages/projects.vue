@@ -2,7 +2,7 @@
 	<div class="tile-page page-bg">
 		<span class="page-spacer"></span>
 		<div class="page-title">Projects</div>
-		<div class="scroll-reveal" v-for="project in projects">
+		<div v-reveal class="scroll-reveal" v-for="project in projects">
 			<InfoTile :title="project.name" :subtitle="project.period" :link="project.link" :tags="project.tech" :points="project.work" />
 		</div>
 		<span class="page-spacer-bottom"></span>

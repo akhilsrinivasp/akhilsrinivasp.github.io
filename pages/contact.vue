@@ -1,7 +1,7 @@
 <template lang="">
     <div class="contact-page page-bg">
         <h1 class="hide">Contact Me</h1>
-        <div v-for="email in emails" class="scroll-reveal">
+        <div v-for="email in emails" v-reveal class="scroll-reveal">
             <Mail class="mail" :mail="email" />
         </div>
     </div>

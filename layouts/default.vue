@@ -1,5 +1,6 @@
 <template>
     <div>
+        <PageBackdrop />
         <!-- Soft teal spotlight that follows the cursor (desktop pointers only). -->
         <div v-if="showSpotlight" class="mouse-light" :style="spotlightStyle" aria-hidden="true"></div>
         <header class="site-header">

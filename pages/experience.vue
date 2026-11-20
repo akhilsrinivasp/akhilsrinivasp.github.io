@@ -4,11 +4,11 @@
         <div class="internship">
             <h1 class="intern-heading heading-eyebrow">EXPERIENCE</h1>
             <h1 class="intern-heading heading-section">INTERN</h1>
-            <div v-for="intern in interns" class="exp-item scroll-reveal">
+            <div v-for="intern in interns" v-reveal class="exp-item scroll-reveal">
                 <InternTile :intern="intern" />
             </div>
             <h1 class="intern-heading heading-section volunteer-heading">VOLUNTEER</h1>
-            <div v-for="org in volunteering" class="exp-item scroll-reveal">
+            <div v-for="org in volunteering" v-reveal class="exp-item scroll-reveal">
                 <VolunteerTile :volunteer="org" />
             </div>
         </div>

@@ -18,14 +18,9 @@ body {
   font-family: var(--font-body);
 }
 
-/* Illustrated backdrop shared by every sub-page (the home page has its own variants). */
+/* Sub-pages fill at least the screen; the illustration behind them is PageBackdrop. */
 .page-bg {
   min-height: 100vh;
-  background-image: url("~/assets/images/home-bg.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
 }
 
 /* The reset makes every svg display:block; keep icons inline. */
@@ -107,6 +102,33 @@ svg.iconify {
       entry 0% entry 100%,
       exit 40% exit 100%;
   }
+
+  /* Tiles already on screen when a page opens get the same reveal, played on a timer
+     (staggered top to bottom) instead of waiting for a scroll. */
+  .scroll-reveal.reveal-now {
+    animation:
+      scroll-reveal 0.9s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0s) both,
+      scroll-recede linear forwards;
+    animation-timeline: auto, view();
+    animation-range: normal, exit 40% exit 100%;
+  }
+}
+
+/* A hovered tile steps out of the scroll animation and settles at full size, so
+   expanding it (which changes its height and therefore its scroll progress) can't make
+   it shrink or fade under the cursor. */
+.scroll-reveal {
+  transition: transform 0.35s ease, opacity 0.35s ease, filter 0.35s ease;
+}
+
+.scroll-reveal:hover {
+  animation: none;
+}
+
+/* Hide tiles until the app has decided which ones to reveal, so they don't flash in
+   and then replay. A script in <head> sets this class and always clears it. */
+.reveal-pending .scroll-reveal {
+  opacity: 0;
 }
 
 /* One-shot entrance used by the nav, the mobile menu and a few headings.
@@ -165,7 +187,12 @@ svg.iconify {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .reveal-pending .scroll-reveal {
+    opacity: 1;
+  }
+
   .scroll-reveal,
+  .scroll-reveal.reveal-now,
   ::view-transition-old(root),
   ::view-transition-new(root) {
     animation: none !important;

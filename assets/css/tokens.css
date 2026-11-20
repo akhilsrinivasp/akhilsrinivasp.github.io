@@ -44,6 +44,42 @@
   --leading-relaxed: 1.4;
   --leading-body: 1.5;
 
+  /* ---------- Backdrop illustration (components/PageBackdrop.vue) ----------
+     A light theme only needs to override these. */
+  --bd-star: #dfe6ff;
+  --bd-star-opacity: 0.22;
+  --bd-wave-1: #62c6f1;
+  --bd-wave-2: #9187f3;
+  --bd-wave-3: #a5ecd7;
+  --bd-wave-opacity: 0.9;
+  --bd-planet: #a76fe6;
+  --bd-planet-light: #d79ef0;
+  --bd-planet-band: #e57fd2;
+  --bd-ring: #eea53a;
+  --bd-ring-light: #f5de6a;
+  --bd-sparkle: #b88df3;
+  --bd-orbit: #5559c0;
+  --bd-rocket: #4b4fd0;
+  --bd-rocket-light: #8a8ff5;
+  --bd-rocket-nose: #262a44;
+  --bd-rocket-fin: #f05a6e;
+  --bd-rocket-window: #7f86a8;
+  --bd-blob-peach: #f1d5c9;
+  --bd-squiggle: #57c6ec;
+  --bd-cap: #2f53c6;
+  --bd-cap-light: #4a72e3;
+  --bd-tassel: #f3b72b;
+  --bd-diploma: #f6e8bb;
+  --bd-desk: #7695ab;
+  --bd-desk-top: #c9d3dc;
+  --bd-monitor: #e2e6ec;
+  --bd-chair: #5f6580;
+  --bd-pot: #c4473b;
+  --bd-leaf: #6aa84f;
+  --bd-suit: #24262f;
+  --bd-skin: #c98c6c;
+  --bd-hair: #1d1b1f;
+
   /* ---------- Surfaces ---------- */
   --radius-card: 25px;
   --shadow-card: rgba(74, 74, 138, 0.25) 0px 50px 100px -20px,

@@ -6,7 +6,7 @@
 		<div class="mobile-title">
 			Education
 		</div>
-		<div class="scroll-reveal" v-for="edu in education">
+		<div v-reveal class="scroll-reveal" v-for="edu in education">
 			<EducationTile :education="edu" />
 		</div>
 		<span class="spacer-bottom">

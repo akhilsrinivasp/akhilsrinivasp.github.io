@@ -2,12 +2,12 @@
 	<div class="tile-page page-bg">
 		<span class="page-spacer"></span>
 		<div class="page-title">About Me</div>
-		<div class="scroll-reveal">
+		<div v-reveal class="scroll-reveal">
 			<InfoTile :title="about.name" :subtitle="about.location">
 				<p v-for="para in about.bio" class="bio">{{ para }}</p>
 			</InfoTile>
 		</div>
-		<div class="scroll-reveal">
+		<div v-reveal class="scroll-reveal">
 			<InfoTile title="Certifications">
 				<div v-for="cert in about.certifications" class="cert">
 					<h3 class="cert-title">{{ cert.title }}</h3>
@@ -15,7 +15,7 @@
 				</div>
 			</InfoTile>
 		</div>
-		<div class="scroll-reveal">
+		<div v-reveal class="scroll-reveal">
 			<InfoTile title="Languages I Speak" :tags="about.languages" />
 		</div>
 		<span class="page-spacer-bottom"></span>
