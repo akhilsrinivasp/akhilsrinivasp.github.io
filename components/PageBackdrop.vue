@@ -120,36 +120,27 @@
 
             <!-- working at the desk -->
             <g class="desk-scene">
-                <!-- chair -->
-                <path class="chair" d="M1702 770 C 1716 764, 1728 772, 1728 786 L 1720 900 C 1716 910, 1706 912, 1700 904 z" />
-                <path class="chair-frame" d="M1676 912 v64 M1636 990 l40 -14 l40 14 M1676 976 v18" />
                 <!-- plant -->
                 <path class="pot" d="M1438 818 h26 l-4 26 h-18 z" />
                 <path class="leaf" d="M1450 818 C 1440 800, 1432 788, 1436 780 C 1450 790, 1454 805, 1450 818 z" />
                 <path class="leaf" d="M1452 818 C 1458 798, 1468 786, 1474 784 C 1474 800, 1464 812, 1452 818 z" />
-                <!-- monitor -->
+                <!-- monitor and keyboard -->
                 <rect class="monitor" x="1498" y="760" width="94" height="66" rx="4" />
                 <path class="monitor-stand" d="M1535 826 h18 l4 18 h-26 z" />
+                <rect class="keyboard" x="1552" y="834" width="56" height="8" rx="2" />
                 <!-- desk -->
                 <rect class="desk-top" x="1390" y="842" width="356" height="12" rx="2" />
                 <rect class="drawers" x="1394" y="854" width="106" height="150" />
                 <path class="drawer-line" d="M1394 890 h106 M1452 854 v150" />
                 <path class="desk-leg" d="M1740 854 v150" />
-                <!-- person, in profile, typing and facing the monitor -->
-                <rect class="chair" x="1636" y="900" width="80" height="12" rx="4" />
-                <rect class="keyboard" x="1552" y="834" width="56" height="8" rx="2" />
-                <!-- legs: thigh forward under the desk, shin down to the floor -->
-                <path class="trousers" d="M1694 880 C 1704 894, 1700 912, 1684 916 L 1606 918 C 1592 918, 1586 902, 1596 892 C 1630 888, 1664 884, 1694 880 z" />
-                <path class="trousers" d="M1594 898 L 1618 902 L 1606 990 L 1582 990 z" />
-                <path class="shoe" d="M1560 986 h48 l2 12 h-56 c0 -6, 2 -10, 6 -12 z" />
-                <!-- seen from behind: back of the suit, neck, back of the head turned to the screen -->
-                <path class="skin" d="M1648 746 h18 l2 24 h-22 z" />
-                <path class="suit" d="M1636 770 C 1660 760, 1692 766, 1700 792 L 1704 880 C 1704 898, 1690 906, 1670 905 L 1642 903 C 1628 862, 1624 806, 1636 770 z" />
-                <!-- arm reaching to the keyboard -->
-                <path class="sleeve" d="M1668 788 C 1662 812, 1652 828, 1638 834 L 1604 836" />
-                <ellipse class="skin" cx="1600" cy="835" rx="9" ry="5" />
-                <ellipse class="skin" cx="1636" cy="734" rx="5" ry="7" />
-                <ellipse class="hair" cx="1657" cy="728" rx="22" ry="26" />
+                <!-- office chair, pulled out beside the desk and turned towards the monitor -->
+                <path class="chair-frame" d="M1797 907 v62 M1765 984 l32 -14 l32 14 M1822 896 l6 -14" />
+                <circle class="chair" cx="1765" cy="990" r="5" />
+                <circle class="chair" cx="1829" cy="990" r="5" />
+                <circle class="chair" cx="1797" cy="992" r="5" />
+                <path class="chair" d="M1818 806 C 1824 798, 1840 800, 1842 812 L 1838 878 C 1836 888, 1824 890, 1820 882 z" />
+                <rect class="chair" x="1762" y="894" width="70" height="13" rx="5" />
+                <path class="chair-frame" d="M1778 872 h28 M1800 872 v22" />
             </g>
         </svg>
     </div>
@@ -434,34 +425,6 @@ svg {
     stroke: var(--bd-desk-top);
     stroke-width: 6;
 }
-
-.suit,
-.trousers {
-    fill: var(--bd-suit);
-}
-
-
-
-.skin {
-    fill: var(--bd-skin);
-}
-
-.hair {
-    fill: var(--bd-hair);
-}
-
-.shoe {
-    fill: var(--bd-hair);
-}
-
-.sleeve {
-    fill: none;
-    stroke: var(--bd-suit);
-    stroke-width: 16;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
 
 .keyboard {
     fill: var(--bd-desk-top);
