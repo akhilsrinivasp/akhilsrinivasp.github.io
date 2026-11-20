@@ -1,7 +1,7 @@
 <template>
     <div class="landing-page grid-container">
         <div class="image-container p-5">
-            <img class="profile-pic transition-opacity duration-1000" src="/assets/images/Akhil.png" alt="profile">
+            <img class="profile-pic transition-opacity duration-1000" src="~/assets/images/Akhil.png" alt="profile">
         </div>
         <div class="text-container space-y-4 flex flex-col">
             <h1 ref="roles" class="roles">
@@ -26,19 +26,40 @@ export default {
     data() {
         return {
             isMobile: false,
+            // The typing loop is a single chain, so only one timeout is pending at a time.
+            timer: undefined as ReturnType<typeof setTimeout> | undefined,
+            cursorInterval: undefined as ReturnType<typeof setInterval> | undefined,
+            destroyed: false,
         };
     },
     mounted() {
         this.initMounted();
     },
+    beforeUnmount() {
+        // Stop the typing loop and cursor blink when leaving the page.
+        this.destroyed = true;
+        clearTimeout(this.timer);
+        clearInterval(this.cursorInterval);
+        window.removeEventListener("resize", this.updateAlignment);
+    },
     methods: {
         initMounted() {
             this.animateTextTyping();
+            this.blinkCursor();
+            this.updateAlignment();
+            window.addEventListener("resize", this.updateAlignment);
+        },
+        updateAlignment() {
             this.isMobile = window.innerWidth < 900;
+            const roles: HTMLElement = this.$refs.roles as HTMLElement;
             if (this.isMobile) {
-                const roles: HTMLElement = this.$refs.roles as HTMLElement;
                 roles.setAttribute("align", "center");
+            } else {
+                roles.removeAttribute("align");
             }
+        },
+        later(fn: () => void, ms: number) {
+            if (!this.destroyed) this.timer = setTimeout(fn, ms);
         },
         animateTextTyping() {
             const defaultText: string = "I am ";
@@ -60,18 +81,17 @@ export default {
                 if (index < defaultText.length) {
                     (this.$refs.defaultText as HTMLElement).textContent += defaultText.charAt(index) as string;
                     index++;
-                    setTimeout(typeNextCharacter, speed);
+                    this.later(typeNextCharacter, speed);
                 } else {
                     if (messages.length > 0) {
                         const message: string = messages.shift() as string;
                         // set a delay of 5 seconds before deleting the message
                         this.typeMessage(message, () => {
-                            setTimeout(() => {
+                            this.later(() => {
                                 this.deleteMessage(message, () => {
                                     typeNextCharacter();
                                 });
                             }, 1500);
-                            this.blinkCursor();
                         });
                         messages.push(message);
                     }
@@ -88,7 +108,7 @@ export default {
                 if (index < message.length) {
                     (this.$refs.typedText as HTMLElement).textContent += message.charAt(index);
                     index++;
-                    setTimeout(typeNextCharacter, speed);
+                    this.later(typeNextCharacter, speed);
                 } else {
                     callback();
                 }
@@ -103,7 +123,7 @@ export default {
                 if (index >= 0) {
                     (this.$refs.typedText as HTMLElement).textContent = message.substring(0, index);
                     index--;
-                    setTimeout(deleteNextCharacter, speed);
+                    this.later(deleteNextCharacter, speed);
                 } else {
                     callback();
                 }
@@ -112,8 +132,9 @@ export default {
             deleteNextCharacter();
         },
         blinkCursor() {
+            // Started once from initMounted; it used to start a new interval per message.
             const cursorElement = this.$el.querySelector(".cursor");
-            setInterval(() => {
+            this.cursorInterval = setInterval(() => {
                 cursorElement.style.opacity = cursorElement.style.opacity === "0" ? "1" : "0";
             }, 500);
         },
@@ -128,7 +149,7 @@ export default {
     justify-content: center;
     align-items: center;
     padding: 15%;
-    background-image: url("/assets/images/home-bg.png");
+    background-image: url("~/assets/images/home-bg.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -192,7 +213,7 @@ export default {
         justify-content: center;
         align-items: center;
         padding: 15%;
-        background-image: url("/assets/images/home-bg.png");
+        background-image: url("~/assets/images/home-bg.png");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -244,7 +265,7 @@ export default {
         background-color: #1a202c;
         height: 100vh;
         padding: 10%;
-        background-image: url("/assets/images/home-bg.png");
+        background-image: url("~/assets/images/home-bg.png");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;

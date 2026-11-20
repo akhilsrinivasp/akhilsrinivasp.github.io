@@ -1,0 +1,14 @@
+[
+    {
+        "category": "Programming Languages",
+        "skills": ["Python", "JavaScript", "Java", "C/C++", "Bash", "TypeScript", "HTML", "CSS"]
+    },
+    {
+        "category": "Technologies",
+        "skills": ["Flask", "Node", "Vue JS", "Nuxt JS", "Express", "Bootstrap", "PostgreSQL", "MongoDB"]
+    },
+    {
+        "category": "Software & Tools",
+        "skills": ["Linux", "Git", "GitHub CLI", "Postman", "Figma", "Mongo Atlas", "StarUML"]
+    }
+]

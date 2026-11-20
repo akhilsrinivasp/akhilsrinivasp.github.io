@@ -1,0 +1,35 @@
+[
+    {
+        "name": "BlogLite Web Application",
+        "period": "April 2023",
+        "link": "https://github.com/akhilsrinivasp/bloglite",
+        "tech": ["Flask", "Vue", "JavaScript", "RESTful APIs"],
+        "work": [
+            "Built BlogLite, a lightweight and user-friendly blogging platform that allows users to post images with a title and description.",
+            "Utilized Flask and Vue to develop the application, showcasing proficiency in JavaScript and RESTful API development.",
+            "Implemented image storage capabilities to enable users to upload and display images within their blog posts."
+        ]
+    },
+    {
+        "name": "Kanban Web Application",
+        "period": "December 2022",
+        "link": "https://github.com/akhilsrinivasp/kanban-full-stk",
+        "tech": ["Vue.js 2", "Flask", "Flask Blueprints"],
+        "work": [
+            "Created a task management application called Kanban, allowing users to create and manage multiple task lists.",
+            "Developed a web application using Vue.js 2 and Flask, leveraging their respective strengths for frontend and backend implementation.",
+            "Implemented APIs using Flask Blueprints to ensure a modular and scalable architecture."
+        ]
+    },
+    {
+        "name": "Traffic Control Management",
+        "period": "May 2022",
+        "link": "",
+        "tech": ["VANET", "Image Processing", "Research"],
+        "work": [
+            "Conducted a comprehensive study of various implementations of Traffic Management Systems.",
+            "Collaborated with faculty at VIT Vellore on a project focused on Disaster Recovery and Business Continuity Protocols, leveraging VANET Systems and Image Processing Techniques.",
+            "Utilized Image Processing Techniques to analyze and process traffic-related data for efficient decision-making."
+        ]
+    }
+]

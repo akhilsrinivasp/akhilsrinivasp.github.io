@@ -1,11 +1,48 @@
-<template lang="">
-    <div>
-        <SiteUnderConstruction align="center"/>
-    </div>
+<template>
+	<div class="tile-page">
+		<span class="page-spacer"></span>
+		<div class="page-title">About Me</div>
+		<div>
+			<InfoTile :title="about.name" :subtitle="about.location">
+				<p v-for="para in about.bio" class="bio">{{ para }}</p>
+			</InfoTile>
+		</div>
+		<div>
+			<InfoTile title="Certifications">
+				<div v-for="cert in about.certifications" class="cert">
+					<h3 class="cert-title text-xl font-medium">{{ cert.title }}</h3>
+					<p class="cert-meta">{{ cert.issuer }} | {{ cert.date }}</p>
+				</div>
+			</InfoTile>
+		</div>
+		<div>
+			<InfoTile title="Languages I Speak" :tags="about.languages" />
+		</div>
+		<span class="page-spacer-bottom"></span>
+	</div>
 </template>
-<script setup>
- 
+<script setup lang="ts">
+import '~/assets/css/tile-page.css'
+import about from '~/assets/data/about.json'
 </script>
-<style>
-    
+<style scoped>
+.bio {
+	line-height: 1.7;
+	padding-top: 2%;
+}
+
+.cert {
+	padding: 1.5% 0;
+}
+
+.cert-meta {
+	color: #cbd5e0;
+}
+
+@media (max-width: 1024px) {
+	.bio,
+	.cert {
+		padding: 3% 0;
+	}
+}
 </style>

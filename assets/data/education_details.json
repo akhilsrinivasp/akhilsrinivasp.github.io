@@ -1,9 +1,9 @@
 [
     {
         "degree": "Bachelor of Technology in Computer Science and Engineering",
-        "site":"https://vit.ac.in/",
+        "site": "https://vit.ac.in/",
         "college": "Vellore Institute of Technology, Vellore",
-        "year": "2020 - 24",
+        "year": "Sep 2020 - Jun 2024",
         "grade": "9.31 CGPA",
         "courses": [
             "Introduction to Web Programming",
@@ -17,10 +17,10 @@
     },
     {
         "degree": "Bachelors of Science in Data Science and Applications",
-        "site":"https://study.iitm.ac.in/ds/",
+        "site": "https://study.iitm.ac.in/ds/",
         "college": "Indian Institute of Technology, Madras",
-        "year": "2021 - 24",
-        "grade": "8.1 CGPA",
+        "year": "Jan 2021 - Dec 2024",
+        "grade": "8.14 CGPA",
         "courses": [
             "Modern Application Development",
             "Java Programming",
@@ -33,7 +33,7 @@
         "site": "https://www.theaccordschool.com/",
         "college": "Accord School, Chiguruwada",
         "year": "2018 - 20",
-        "grade": "95.4%",
+        "grade": "95.4% (Ranked 2nd in School)",
         "courses": [
             "Physics",
             "Chemistry",

@@ -22,7 +22,16 @@ export default {
         };
     },
     mounted() {
-        this.isMobile = window.innerWidth < 900;
+        this.checkMobile();
+        window.addEventListener('resize', this.checkMobile);
+    },
+    beforeUnmount() {
+        window.removeEventListener('resize', this.checkMobile);
+    },
+    methods: {
+        checkMobile() {
+            this.isMobile = window.innerWidth < 900;
+        },
     },
 }
 </script>

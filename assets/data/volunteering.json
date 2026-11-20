@@ -1,9 +1,16 @@
 [
     {
-        "organisation": "Ayuda NGO",
+        "organisation": "Ayuda NGO - Club, VIT Vellore",
         "description": "Ayuda NGO, founded in 2013 by a passionate group of students, embarked on a mission to create a positive impact in the world. With a dedicated team and diverse projects, Ayuda has gained recognition for their efforts in tackling issues such as sexual violence, supporting differently-abled organizations, and raising awareness about drug abuse. Their journey is marked by diligence, team spirit, and a commitment to being the change they want to see.",
-        "logo": "/assets/images/ayuda-logo.png",
+        "logo": "ayuda-logo.png",
         "link": "https://ngoayuda.org/",
+        "location": "VIT Vellore",
+        "period": "June 2021 - Present",
+        "highlights": [
+            "Led 200+ students across 7 domains for over 2 years, fostering a collaborative environment.",
+            "Accomplished sponsorships exceeding 1 lakh and managed logistics for large-scale events.",
+            "Led a Podcast Team as part of the NGO initiative, contributing to community engagement and awareness."
+        ],
         "roles": [
             {
                 "role": "Chairperson",
@@ -12,28 +19,40 @@
             },
             {
                 "role": "Co-Secretary",
-                "duration": "Jan 2022 - Dec 2023",
-                "work": "I was responsible for the smooth functioning of the organization, and was in charge of the recruitment and training of 450 members. I also led the podcast domain with tightly knitt team of 15 people, and was responsible for the overseeing of outreach domain."
+                "duration": "Jan 2022 - Dec 2022",
+                "work": "I was responsible for the smooth functioning of the organization, and was in charge of the recruitment and training of 450 members. I also led the podcast domain with a tightly knit team of 15 people, and was responsible for overseeing the outreach domain."
             },
             {
                 "role": "Core Committee Member",
-                "duration": "June 2021 - Dec 2022",
-                "work": "I was a part of the outreach domain. I used to teach kids of orphanages and involved in the founding stages of the podcast domain - The Social Muse."
+                "duration": "June 2021 - Dec 2021",
+                "work": "I was a part of the outreach domain. I used to teach kids of orphanages and was involved in the founding stages of the podcast domain - The Social Muse."
             }
         ]
     },
     {
-        "organisation": "Cosmos - Tech Society",
+        "organisation": "Cosmos - Technical Society, IIT Madras",
         "description": "Cosmos, formerly known as Cosmos IIT Madras BSc - Technical Club of Saranda, is the vibrant technical society of IIT Madras BS. Comprising a dedicated community of tech enthusiasts, we foster a passion for continuous learning and knowledge-sharing. Through a range of meticulously organized events and workshops, we empower students to expand their skills and flourish, fostering a culture of collective growth and collaboration.",
-        "logo": "/assets/images/cosmos-logo.png",
+        "logo": "cosmos-logo.png",
+        "logoBg": "#1a202c",
         "link": "https://cosmos-iitm.netlify.app/",
+        "location": "Remote",
+        "period": "Sep 2021 - Dec 2022",
+        "highlights": [
+            "Reviewed 500+ applicants, made crucial role assignments, promoted club culture, and facilitated community interactions.",
+            "Organized and led events: the \"Kick Off\" hackathon and the pioneering \"Codathon\" at IIT Madras.",
+            "Supervised 6 events during the IIT Madras Cultural/Technical Fest."
+        ],
         "roles": [
             {
                 "role": "Chairperson",
-                "duration": "Jan 2022 - Present",
+                "duration": "Jan 2022 - Dec 2022",
                 "work": "I skillfully led and coordinated a diverse team of 150 members, overseeing the effective management of 3 separate domains within the organization. Through my leadership, we successfully organized and executed over 5 impactful events, while also mentoring and training a group of 5 individuals to excel in leadership roles."
+            },
+            {
+                "role": "Co-Founder & Secretary",
+                "duration": "Sep 2021 - Dec 2021",
+                "work": "Co-founded the society and, as Secretary, set up its early structure, recruitment and first events."
             }
-            
         ]
     }
 ]

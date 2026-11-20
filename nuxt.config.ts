@@ -5,7 +5,7 @@ export default defineNuxtConfig({
     head: {
       title: 'Akhil - Portfolio',
       meta: [ { charset: 'utf-8' } ],
-      link: [ { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' } ]
+      link: [ { rel: 'icon', type: 'image/x-icon', href: (process.env.NUXT_APP_BASE_URL || '/') + 'favicon.ico' } ]
     },
   },
   modules: [
@@ -13,6 +13,6 @@ export default defineNuxtConfig({
     'nuxt-icon'
   ],
   css: [
-    '/assets/css/styles.css'
+    '~/assets/css/styles.css'
   ],
 })

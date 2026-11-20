@@ -1,0 +1,16 @@
+{
+    "name": "Akhil Srinivas Parimala",
+    "location": "Tirupati, India",
+    "bio": [
+        "I'm a software engineer who enjoys building back-end systems and the web applications on top of them, mostly with Python, Flask, Vue and Nuxt.",
+        "I studied Computer Science and Engineering at VIT Vellore alongside a BS in Data Science and Applications at IIT Madras. I've interned with Oracle Communications at Oracle India and built the back end of an e-commerce platform at Powstik.",
+        "Outside of code, I've spent years leading student communities: chairing Ayuda NGO at VIT and co-founding Cosmos, the technical society of IIT Madras BS."
+    ],
+    "languages": ["English", "Telugu", "Tamil", "Hindi", "French (Elementary)"],
+    "certifications": [
+        { "title": "Code for Good 2023 Participant", "issuer": "JPMorgan Chase & Co., Bangalore", "date": "2023" },
+        { "title": "Software Engineering Virtual Experience", "issuer": "JPMorgan Chase & Co., Forage", "date": "Jun 2023" },
+        { "title": "Postman API Fundamentals Student Expert", "issuer": "Postman, Badgr", "date": "May 2023" },
+        { "title": "Version Control", "issuer": "Meta, Coursera", "date": "Jun 2020" }
+    ]
+}

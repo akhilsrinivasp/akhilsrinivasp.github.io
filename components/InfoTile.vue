@@ -1,0 +1,143 @@
+<!-- Generic tile in the same style as EducationTile, used by Projects, Skills and About -->
+<template>
+  <div class="info-wrap">
+    <div class="info-tile">
+      <component :is="link ? 'a' : 'div'" :href="link || undefined" target="_blank" class="title-link">
+        <h1 class="info-title text-4xl font-medium">
+          {{ title }}
+          <Icon v-if="link" name="uil:github" class="title-icon" />
+        </h1>
+      </component>
+      <h3 v-if="subtitle" class="info-subtitle text-xl font-medium">{{ subtitle }}</h3>
+      <div v-if="tags && tags.length" class="tag-box">
+        <template v-for="(tag, index) in tags">
+          <span class="tag">{{ tag }}</span>
+          <span class="dot" v-if="index < tags.length - 1"> • </span>
+        </template>
+      </div>
+      <ul v-if="points && points.length" class="points">
+        <li v-for="point in points">{{ point }}</li>
+      </ul>
+      <slot />
+    </div>
+  </div>
+</template>
+<script setup lang="ts">
+defineProps<{
+  title: string
+  subtitle?: string
+  link?: string
+  tags?: string[]
+  points?: string[]
+}>()
+</script>
+<style scoped>
+.info-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.info-tile {
+  background-color: #1a202c;
+  border: 1px solid #1a202c;
+  width: 100%;
+  box-shadow: rgba(74, 74, 138, 0.25) 0px 50px 100px -20px,
+    rgba(255, 255, 255, 0.3) 0px 30px 60px -30px,
+    rgba(26, 98, 170, 0.35) 0px -2px 6px 0px inset;
+  font-family: "Montserrat", sans-serif;
+  border-radius: 25px;
+  color: #fff;
+  transition: background-color 0.2s;
+}
+
+.title-icon {
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
+  margin-left: 8px;
+}
+
+.info-subtitle {
+  padding-bottom: 1%;
+}
+
+.tag-box {
+  padding-bottom: 2%;
+}
+
+.points {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.points li {
+  line-height: 1.6;
+  padding: 0.4% 0;
+}
+
+.points li::before {
+  content: "• ";
+}
+
+@media (min-width: 1024px) {
+  .info-tile {
+    width: 1000px;
+    padding: 6%;
+    margin: 2%;
+  }
+
+  .info-title {
+    padding-bottom: 1.5%;
+    transition: font-size 0.2s;
+  }
+
+  .info-tile:hover {
+    background-color: #2d3748;
+  }
+
+  .title-link:hover .info-title {
+    font-size: 2.7rem;
+  }
+
+  .tag {
+    font-size: 1rem;
+    letter-spacing: 0.09rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .info-tile {
+    width: 400px;
+    max-width: 90vw;
+    padding: 7%;
+    margin: 5%;
+    text-align: center;
+  }
+
+  .info-title {
+    padding-bottom: 5%;
+    font-size: 1.7rem;
+  }
+
+  .info-subtitle {
+    padding-bottom: 4%;
+  }
+
+  .tag {
+    font-size: 0.9rem;
+    letter-spacing: 0.1rem;
+    display: block;
+    padding: 2%;
+  }
+
+  .dot {
+    display: none;
+  }
+
+  .points li {
+    padding: 2% 0;
+  }
+}
+</style>

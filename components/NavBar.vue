@@ -50,7 +50,7 @@ header {
 }
 .router-link-exact-active {
     color: #d8d8d8;
-    background-image: url("/assets/images/link-active.png");
+    background-image: url("~/assets/images/link-active.png");
     background-position: 0 100%;
     background-repeat: no-repeat;
     background-size: 100px;

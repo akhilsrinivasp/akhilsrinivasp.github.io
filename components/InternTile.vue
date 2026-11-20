@@ -3,7 +3,7 @@
         <div class="intern-tile" @mouseover="hover=true" @mouseleave="hover=false">
             <div class="company-logo-container ease duration-500">
                 <div class="company-logo ease duration-500">
-                    <img :src="intern.logo" alt="company logo" /> 
+                    <img :src="useImage(intern.logo)" :alt="`${intern.company} logo`" /> 
                 </div>
             </div>
             <div class="intern-details-container">
