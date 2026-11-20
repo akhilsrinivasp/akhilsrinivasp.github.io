@@ -14,7 +14,7 @@ export default defineNuxtConfig({
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'color-scheme', content: 'dark light' },
-        { name: 'theme-color', content: '#1a202c' },
+        { name: 'theme-color', content: '#f4f5f7' },
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: (process.env.NUXT_APP_BASE_URL || '/') + 'favicon.ico' },
@@ -24,9 +24,9 @@ export default defineNuxtConfig({
       ],
       script: [
         {
-          // Theme before first paint: saved choice, else the system setting, else dark.
+          // Theme before first paint: the visitor's saved choice, else light.
           innerHTML:
-            "(function(){var t='dark';try{var s=localStorage.getItem('theme');t=s||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark')}catch(e){}document.documentElement.dataset.theme=t})()",
+            "(function(){var t='light';try{t=localStorage.getItem('theme')==='dark'?'dark':'light'}catch(e){}document.documentElement.dataset.theme=t})()",
           tagPosition: 'head',
         },
         {

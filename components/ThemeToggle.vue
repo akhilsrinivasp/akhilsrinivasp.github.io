@@ -12,8 +12,8 @@
 <script setup lang="ts">
 defineProps<{ withText?: boolean }>()
 const { theme, mounted, toggle } = useTheme()
-// Before mount the server can't know the theme, so render as dark and correct after.
-const isLight = computed(() => mounted.value && theme.value === 'light')
+// Before mount the server can't know the theme, so render as light (the default) and correct after.
+const isLight = computed(() => !mounted.value || theme.value === 'light')
 const label = computed(() => (isLight.value ? 'Switch to dark mode' : 'Switch to light mode'))
 </script>
 

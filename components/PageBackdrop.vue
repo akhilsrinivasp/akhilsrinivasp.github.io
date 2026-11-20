@@ -236,6 +236,10 @@ svg {
 
 .stars circle {
     fill: var(--bd-star);
+    /* a halo of the same colour makes the stars larger where the background is light */
+    stroke: var(--bd-star);
+    stroke-width: var(--bd-star-halo);
+    stroke-opacity: 0.5;
     opacity: var(--bd-star-opacity);
 }
 

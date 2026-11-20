@@ -1,9 +1,22 @@
 // v-reveal: tiles that are already on screen when a page opens play the scroll-reveal
-// entrance on a timer; everything below the fold keeps the scroll-driven version.
+// entrance on a timer; everything below the fold keeps the scroll-driven version. A tile is
+// "revealed" for good once its entrance finishes or it is first hovered.
 export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.directive('reveal', {
         getSSRProps: () => ({}),
         mounted(el: HTMLElement) {
+            // Hovering pauses a tile's animations (so expanding it can't make it shrink or
+            // jitter). Leaving would restart them and replay the reveal, so the first hover
+            // marks the tile as revealed for good: it keeps only the scroll-away recede.
+            el.addEventListener(
+                'pointerenter',
+                () => {
+                    el.classList.remove('reveal-now')
+                    el.classList.add('revealed')
+                },
+                { once: true },
+            )
+
             const { top } = el.getBoundingClientRect()
             if (top >= window.innerHeight * 0.95) return
             const delay = (Math.max(0, top) / window.innerHeight) * 0.45
@@ -15,7 +28,8 @@ export default defineNuxtPlugin((nuxtApp) => {
             // tile back to half-revealed.
             const settle = (e: AnimationEvent) => {
                 if (e.target !== el || e.animationName !== 'scroll-reveal') return
-                el.classList.replace('reveal-now', 'revealed')
+                el.classList.remove('reveal-now')
+                el.classList.add('revealed')
                 el.removeEventListener('animationend', settle)
             }
             el.addEventListener('animationend', settle)

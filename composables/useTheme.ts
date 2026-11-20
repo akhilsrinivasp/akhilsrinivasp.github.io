@@ -1,16 +1,16 @@
 // Light/dark theme. The current theme lives on <html data-theme>, set before first paint by
-// the script in nuxt.config.ts (saved choice, else the system setting). This composable
+// the script in nuxt.config.ts (saved choice, else light). This composable
 // reads it after mount, switches it, and remembers an explicit choice.
 export type Theme = 'light' | 'dark'
 
 export const THEME_KEY = 'theme'
 
 export function useTheme() {
-    const theme = useState<Theme>('theme', () => 'dark')
+    const theme = useState<Theme>('theme', () => 'light')
     const mounted = useMounted()
 
     onMounted(() => {
-        theme.value = document.documentElement.dataset.theme === 'light' ? 'light' : 'dark'
+        theme.value = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light'
     })
 
     function apply(next: Theme) {

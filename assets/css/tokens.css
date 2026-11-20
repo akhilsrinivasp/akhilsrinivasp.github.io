@@ -53,6 +53,7 @@
      A light theme only needs to override these. */
   --bd-star: #dfe6ff;
   --bd-star-opacity: 0.22;
+  --bd-star-halo: 0;
   --bd-shooting-opacity: 0.8;
   --bd-wave-1: #62c6f1;
   --bd-wave-2: #9187f3;
@@ -125,8 +126,11 @@
   --shadow-text: 0 1px 2px rgb(20 24 40 / 0.15);
   --gradient-nav: linear-gradient(135deg, #ffffff 0%, #eef1f6 35%, #e6eaf2 70%, #f3f5f9 100%);
 
-  --bd-star-opacity: 0;
-  --bd-shooting-opacity: 0;
+  /* soft gold stars: visible on off-white without competing with the content */
+  --bd-star: #e0a92b;
+  --bd-star-opacity: 0.6;
+  --bd-star-halo: 2.2;
+  --bd-shooting-opacity: 0.7;
   --bd-wave-1: #2b9fd6;
   --bd-wave-2: #6a5ee0;
   --bd-wave-3: #2fb393;
