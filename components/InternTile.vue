@@ -87,9 +87,6 @@ type intern_details = {
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: reveal 1s forwards;
-    transform: translateY(-20px);
-    opacity: 0;
 }
 .intern-details-container { 
     padding: 40px;
@@ -99,22 +96,18 @@ type intern_details = {
 
 .intern-details-container > div {
     margin: 10px 0;
-    animation: reveal 1s forwards;
-    transform: translateY(-20px);
+}
+
+/* details that appear on hover ease in rather than pop */
+.description,
+.work,
+.role .work-text {
+    animation: reveal 0.5s forwards;
+    transform: translateY(-10px);
     opacity: 0;
 }
 
 
-.work-name {
-    font-weight: var(--weight-regular);
-    margin: 0;
-    padding: 0;
-    text-align: left;
-    line-height: 1.5;
-    animation: reveal 1s forwards;
-    transform: translateY(-20px);
-    opacity: 0;
-}
 
 .company-logo img {
     max-width: 100%;

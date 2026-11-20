@@ -1,6 +1,6 @@
 <template>
     <!-- https://imgbox.com/ -->
-    <div>
+    <div class="page-bg">
         <div class="internship">
             <h1 class="intern-heading heading-eyebrow">EXPERIENCE</h1>
             <h1 class="intern-heading heading-section">INTERN</h1>

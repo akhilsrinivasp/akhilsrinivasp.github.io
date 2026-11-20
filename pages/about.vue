@@ -1,5 +1,5 @@
 <template>
-	<div class="tile-page">
+	<div class="tile-page page-bg">
 		<span class="page-spacer"></span>
 		<div class="page-title">About Me</div>
 		<div class="scroll-reveal">

@@ -75,9 +75,6 @@ const hover = ref(false)
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: reveal 1s forwards;
-    transform: translateY(-20px);
-    opacity: 0;
 }
 
 .company-logo img {
@@ -94,8 +91,14 @@ const hover = ref(false)
 
 .details-container > div {
     margin: 10px 0;
-    animation: reveal 1s forwards;
-    transform: translateY(-20px);
+}
+
+/* details that appear on hover ease in rather than pop */
+.description,
+.work,
+.role .work-text {
+    animation: reveal 0.5s forwards;
+    transform: translateY(-10px);
     opacity: 0;
 }
 

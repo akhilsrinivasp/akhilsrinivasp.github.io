@@ -107,6 +107,8 @@ useEventListener('resize', () => follow(0))
 <style scoped>
 header {
     padding: 0;
+    /* the lamp lives inside the bar; never let its light spill onto the page */
+    overflow: clip;
     background-color: var(--color-bg);
     background-image: var(--gradient-nav);
     box-shadow: var(--shadow-bar);
@@ -163,7 +165,7 @@ header {
     bottom: 0;
     left: calc(var(--beam-x) - var(--spill));
     width: calc(var(--beam-w) + 2 * var(--spill));
-    height: calc(100% + 2rem);
+    height: 100%;
     pointer-events: none;
     transform-origin: 50% 100%;
     opacity: 0;

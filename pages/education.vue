@@ -1,5 +1,5 @@
 <template>
-	<div class="education">
+	<div class="education page-bg">
 		<span class="spacer">
 
 		</span>
@@ -33,11 +33,6 @@ const education: education_details[] = educationData;
 	flex-direction: column;
 	align-items: center;
 	width:100%;
-	background-image: url("~/assets/images/home-bg.png");
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
-	background-attachment: fixed;
 }
 
 @media (min-width: 1024px) {
