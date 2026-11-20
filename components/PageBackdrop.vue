@@ -263,7 +263,7 @@ svg {
         transform: translate(1380px, 70px);
     }
     2% {
-        opacity: 0.8;
+        opacity: var(--bd-shooting-opacity);
     }
     7% {
         opacity: 0;

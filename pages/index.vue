@@ -47,7 +47,7 @@ const { prefixText, typedText } = useTypewriter("I am ", messages)
 .profile-pic {
     border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
     object-fit: cover;
-    border: 5px solid white;
+    border: 5px solid var(--color-logo-plate);
     box-shadow: var(--shadow-glow);
     transition: 0.2s;
     opacity: 0;

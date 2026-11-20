@@ -154,7 +154,7 @@ header {
     font-size: var(--text-2xl);
     font-weight: var(--weight-bold);
     /* lit from below by the lamp */
-    text-shadow: var(--shadow-text), 0 6px 18px rgb(255 255 255 / 0.35);
+    text-shadow: var(--shadow-text), 0 6px 18px color-mix(in srgb, var(--lamp-color) 35%, transparent);
 }
 
 /* ---------- The lamp ---------- */
@@ -194,9 +194,9 @@ header {
 
 .cone {
     background:
-        radial-gradient(55% 60% at 50% 100%, rgb(255 255 255 / 0.55), transparent 75%),
+        radial-gradient(55% 60% at 50% 100%, color-mix(in srgb, var(--lamp-color) 55%, transparent), transparent 75%),
         linear-gradient(to top,
-            rgb(255 255 255 / 0.4),
+            color-mix(in srgb, var(--lamp-color) 40%, transparent),
             color-mix(in srgb, var(--color-accent) 22%, transparent) 50%,
             transparent 95%);
     filter: blur(2px);
@@ -207,11 +207,11 @@ header {
 /* specks of dust drifting up through the light */
 .motes {
     background-image:
-        radial-gradient(1px 1px at 22% 30%, rgb(255 255 255 / 0.8), transparent),
-        radial-gradient(1.5px 1.5px at 68% 62%, rgb(255 255 255 / 0.6), transparent),
-        radial-gradient(1px 1px at 45% 85%, rgb(255 255 255 / 0.7), transparent),
-        radial-gradient(1px 1px at 80% 18%, rgb(255 255 255 / 0.5), transparent),
-        radial-gradient(1.5px 1.5px at 35% 55%, rgb(255 255 255 / 0.5), transparent);
+        radial-gradient(1px 1px at 22% 30%, color-mix(in srgb, var(--lamp-color) 80%, transparent), transparent),
+        radial-gradient(1.5px 1.5px at 68% 62%, color-mix(in srgb, var(--lamp-color) 60%, transparent), transparent),
+        radial-gradient(1px 1px at 45% 85%, color-mix(in srgb, var(--lamp-color) 70%, transparent), transparent),
+        radial-gradient(1px 1px at 80% 18%, color-mix(in srgb, var(--lamp-color) 50%, transparent), transparent),
+        radial-gradient(1.5px 1.5px at 35% 55%, color-mix(in srgb, var(--lamp-color) 50%, transparent), transparent);
     background-size: 100% 50%;
     mask-image: linear-gradient(to top, #000 30%, transparent);
     animation: lamp-dust 7s linear infinite;
@@ -226,9 +226,9 @@ header {
     right: 30%;
     height: 3px;
     border-radius: 3px 3px 0 0;
-    background: linear-gradient(90deg, transparent, #fff 25%, #fff 75%, transparent);
+    background: linear-gradient(90deg, transparent, var(--lamp-color) 25%, var(--lamp-color) 75%, transparent);
     box-shadow:
-        0 0 6px 1px rgb(255 255 255 / 0.8),
+        0 0 6px 1px color-mix(in srgb, var(--lamp-color) 80%, transparent),
         0 0 18px 4px color-mix(in srgb, var(--color-accent) 45%, transparent);
 }
 

@@ -10,8 +10,8 @@ body {
 /* Shared card surface used by every tile (education, projects, skills, about,
    experience, contact). Components add their own sizing and layout on top. */
 .card {
-  background-color: var(--color-bg);
-  border: 1px solid var(--color-bg);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-surface);
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-card);
   color: var(--color-text);
@@ -112,6 +112,12 @@ svg.iconify {
     animation-timeline: auto, view();
     animation-range: normal, exit 40% exit 100%;
   }
+
+  .scroll-reveal.revealed {
+    animation: scroll-recede linear forwards;
+    animation-timeline: view();
+    animation-range: exit 40% exit 100%;
+  }
 }
 
 /* A hovered tile steps out of the scroll animation and settles at full size, so
@@ -186,6 +192,31 @@ svg.iconify {
   }
 }
 
+/* ---------- Theme switch ----------
+   The new theme grows out of the toggle in a circle. The header and footer join the page
+   snapshot for this one transition so the whole screen changes together. */
+:root.theme-switching .site-header,
+:root.theme-switching .site-footer {
+  view-transition-name: none;
+}
+
+:root.theme-switching::view-transition-old(root) {
+  animation: none;
+}
+
+:root.theme-switching::view-transition-new(root) {
+  animation: theme-reveal 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+@keyframes theme-reveal {
+  from {
+    clip-path: circle(0 at var(--vt-x) var(--vt-y));
+  }
+  to {
+    clip-path: circle(var(--vt-r) at var(--vt-x) var(--vt-y));
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal-pending .scroll-reveal {
     opacity: 1;
@@ -193,6 +224,7 @@ svg.iconify {
 
   .scroll-reveal,
   .scroll-reveal.reveal-now,
+  .scroll-reveal.revealed,
   ::view-transition-old(root),
   ::view-transition-new(root) {
     animation: none !important;

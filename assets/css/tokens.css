@@ -1,6 +1,8 @@
 /* Design tokens: the one place for colours, type, shadows and radii.
    Components reference these via var(--…) instead of hardcoding values. */
 :root {
+  color-scheme: dark;
+
   /* ---------- Colour palette ---------- */
   --color-bg: #1a202c;              /* page background, cards, scrolled header */
   --color-surface-hover: #2d3748;   /* card background on hover */
@@ -10,6 +12,9 @@
   --color-text-inverse: #000;       /* text on the white mobile menu */
   --color-surface-inverse: #fff;    /* mobile menu, logo plates, hovered experience tiles */
   --color-accent: #4fd1c5;          /* "Akhil" wordmark, cursor spotlight */
+  --color-surface: #1a202c;         /* cards */
+  --color-logo-plate: #fff;         /* plate behind company logos (logos are made for white) */
+  --lamp-color: #fff;               /* active-tab lamp in the nav bar */
 
   /* ---------- Typography ---------- */
   --font-body: 'Montserrat', sans-serif;
@@ -48,6 +53,7 @@
      A light theme only needs to override these. */
   --bd-star: #dfe6ff;
   --bd-star-opacity: 0.22;
+  --bd-shooting-opacity: 0.8;
   --bd-wave-1: #62c6f1;
   --bd-wave-2: #9187f3;
   --bd-wave-3: #a5ecd7;
@@ -90,4 +96,41 @@
   --shadow-glow-strong: 0 0 20px rgba(255, 255, 255, 0.5);
   --shadow-text: 2px 2px 4px #000;
   --gradient-nav: linear-gradient(135deg, #16213E 0%, #274156 30%, #1C2E4A 70%, #0E1E34 100%);
+}
+
+/* ---------- Light theme ----------
+   A cool off-white that keeps the site's blues and violets reading true. Only values that
+   differ from dark are listed. The theme is set on <html data-theme> by a script in <head>
+   (saved choice, else the system setting) before the page paints. */
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --color-bg: #f4f5f7;
+  --color-surface: #fbfbfc;
+  --color-surface-hover: #e9ecf2;
+  --color-text: #1b2030;
+  --color-text-soft: #3b4256;
+  --color-text-muted: #5a6378;
+  --color-text-inverse: #fff;
+  --color-surface-inverse: #1b2030;
+  --color-accent: #0e9488;
+  --lamp-color: #6a5ee0;
+
+  --shadow-card: rgba(60, 70, 120, 0.16) 0px 40px 80px -24px,
+    rgba(60, 70, 120, 0.1) 0px 2px 6px 0px,
+    rgba(255, 255, 255, 0.9) 0px -2px 6px 0px inset;
+  --shadow-bar: 0 4px 12px -2px rgb(30 40 80 / 0.12);
+  --shadow-glow: 0 0 10px rgb(30 40 80 / 0.18);
+  --shadow-glow-strong: 0 0 20px rgb(30 40 80 / 0.22);
+  --shadow-text: 0 1px 2px rgb(20 24 40 / 0.15);
+  --gradient-nav: linear-gradient(135deg, #ffffff 0%, #eef1f6 35%, #e6eaf2 70%, #f3f5f9 100%);
+
+  --bd-star-opacity: 0;
+  --bd-shooting-opacity: 0;
+  --bd-wave-1: #2b9fd6;
+  --bd-wave-2: #6a5ee0;
+  --bd-wave-3: #2fb393;
+  --bd-wave-opacity: 0.55;
+  --bd-desk-top: #aab6c3;
+  --bd-monitor: #cfd5de;
 }

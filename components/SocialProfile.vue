@@ -18,6 +18,7 @@
                     <Icon name="uil:twitter" class="icon-class" />
                 </a>
             </div>
+            <ThemeToggle class="theme-toggle-desktop" />
         </nav>
 
     </div>
@@ -75,6 +76,15 @@ const scrolled = computed(() => y.value > 35)
 
 .router-link-exact-active {
     font-size: var(--text-7xl);
+}
+
+.theme-toggle-desktop {
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    translate: 0 -50%;
+    opacity: 0;
+    animation: reveal 1s 1s forwards;
 }
 
 .icon-class {

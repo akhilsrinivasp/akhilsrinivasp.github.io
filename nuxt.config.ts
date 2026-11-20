@@ -13,7 +13,7 @@ export default defineNuxtConfig({
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'color-scheme', content: 'dark' },
+        { name: 'color-scheme', content: 'dark light' },
         { name: 'theme-color', content: '#1a202c' },
       ],
       link: [
@@ -22,9 +22,15 @@ export default defineNuxtConfig({
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
         { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Marck+Script&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap' },
       ],
-      // Hide tiles until plugins/reveal.ts has picked which to animate; never longer than 2.5s.
       script: [
         {
+          // Theme before first paint: saved choice, else the system setting, else dark.
+          innerHTML:
+            "(function(){var t='dark';try{var s=localStorage.getItem('theme');t=s||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark')}catch(e){}document.documentElement.dataset.theme=t})()",
+          tagPosition: 'head',
+        },
+        {
+          // Hide tiles until plugins/reveal.ts has picked which to animate; never longer than 2.5s.
           innerHTML:
             "document.documentElement.classList.add('reveal-pending');setTimeout(function(){document.documentElement.classList.remove('reveal-pending')},2500)",
           tagPosition: 'head',

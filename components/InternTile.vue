@@ -83,7 +83,7 @@ type intern_details = {
     border-radius: 25%;
     padding: 25px;
     margin-top: 28px;
-    background-color: var(--color-surface-inverse);
+    background-color: var(--color-logo-plate);
     display: flex;
     justify-content: center;
     align-items: center;

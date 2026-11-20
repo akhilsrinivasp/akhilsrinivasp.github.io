@@ -21,6 +21,8 @@
             <NuxtLink class='link' @click="toggleDropdown" to="/about">About Me</NuxtLink> <br>
             <NuxtLink class='link' @click="toggleDropdown" to="/contact">Contact</NuxtLink> <br>
 
+            <ThemeToggle with-text class="theme-toggle-mobile" />
+
             <div class="socials" align="center">
                 <a href="https://www.linkedin.com/in/akhilsrinivasp/" target="_blank">
                     <Icon name="uil:linkedin" class="icon-class" />
@@ -51,7 +53,7 @@ const { y } = useWindowScroll()
 const scrolled = computed(() => y.value > 40)
 
 // ---------- Pull past the end of the page to open the menu ----------
-const PULL_DISTANCE = 110 // px of extra scrolling needed
+const PULL_DISTANCE = 150 // px of extra scrolling needed
 const pull = ref(0)
 const progress = computed(() => Math.min(1, pull.value / PULL_DISTANCE))
 const atEnd = ref(false)
@@ -233,6 +235,12 @@ useEventListener('wheel', (e: WheelEvent) => {
     .pull-hint {
         transition: opacity 0.3s ease;
     }
+}
+
+.theme-toggle-mobile {
+    margin-top: 1.5rem;
+    padding: 0.5rem 1.25rem;
+    border: 1px solid color-mix(in srgb, currentColor 30%, transparent);
 }
 
 .socials {
