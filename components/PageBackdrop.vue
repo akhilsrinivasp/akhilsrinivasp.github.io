@@ -81,7 +81,8 @@
                 <circle cx="176" cy="965" r="17" />
             </g>
 
-            <!-- rocket -->
+            <!-- rocket (outer group floats; the inner keeps its placement transform) -->
+            <g class="rocket-float">
             <g class="rocket" transform="translate(395 905) rotate(-24)">
                 <path class="fin" d="M60 -40 C 90 -95, 140 -110, 160 -100 C 130 -80, 110 -55, 100 -38 z" />
                 <path class="fin" d="M60 40 C 90 95, 140 110, 160 100 C 130 80, 110 55, 100 38 z" />
@@ -93,10 +94,11 @@
                 <circle class="window" cx="-10" cy="0" r="15" />
                 <circle class="window-glint" cx="-15" cy="-5" r="5" />
             </g>
+            </g>
 
             <!-- blob and squiggle -->
-            <path class="blob-peach" d="M578 150 C 560 110, 600 100, 640 92 C 670 86, 676 60, 692 66 C 710 74, 700 120, 690 138 C 676 160, 640 150, 615 165 C 595 178, 588 168, 578 150 z" />
-            <path class="squiggle" d="M1302 58 C 1270 50, 1258 82, 1268 104 C 1278 126, 1310 112, 1306 96 C 1300 76, 1262 102, 1268 128 C 1274 150, 1296 150, 1294 166" />
+            <path class="blob-peach drift-a" d="M578 150 C 560 110, 600 100, 640 92 C 670 86, 676 60, 692 66 C 710 74, 700 120, 690 138 C 676 160, 640 150, 615 165 C 595 178, 588 168, 578 150 z" />
+            <path class="squiggle drift-b" d="M1302 58 C 1270 50, 1258 82, 1268 104 C 1278 126, 1310 112, 1306 96 C 1300 76, 1262 102, 1268 128 C 1274 150, 1296 150, 1294 166" />
 
             <!-- graduation cap and diploma -->
             <g class="graduation">
@@ -114,16 +116,20 @@
                 <!-- button, cord to the corner, and the tassel hanging off it -->
                 <path class="tassel-cord" d="M1690 96 C 1730 92, 1770 92, 1794 100 L 1794 150" />
                 <circle class="tassel" cx="1690" cy="96" r="6" />
-                <circle class="tassel" cx="1794" cy="150" r="5" />
-                <path class="tassel" d="M1788 152 h12 l6 40 h-24 z" />
+                <g class="tassel-swing">
+                    <circle class="tassel" cx="1794" cy="150" r="5" />
+                    <path class="tassel" d="M1788 152 h12 l6 40 h-24 z" />
+                </g>
             </g>
 
             <!-- working at the desk -->
             <g class="desk-scene">
                 <!-- plant -->
                 <path class="pot" d="M1438 818 h26 l-4 26 h-18 z" />
+                <g class="leaves">
                 <path class="leaf" d="M1450 818 C 1440 800, 1432 788, 1436 780 C 1450 790, 1454 805, 1450 818 z" />
                 <path class="leaf" d="M1452 818 C 1458 798, 1468 786, 1474 784 C 1474 800, 1464 812, 1452 818 z" />
+                </g>
                 <!-- monitor and keyboard -->
                 <rect class="monitor" x="1498" y="760" width="94" height="66" rx="4" />
                 <path class="monitor-stand" d="M1535 826 h18 l4 18 h-26 z" />
@@ -430,11 +436,136 @@ svg {
     fill: var(--bd-desk-top);
 }
 
+/* Idle motion for the objects, so they float in the same scene as the breathing wave.
+   Each has its own period (none a multiple of another) so they never move in lockstep,
+   and all move less than the wave does. The desk stays grounded except for the plant. */
+.planet,
+.graduation,
+.rocket-float,
+.drift-a,
+.drift-b {
+    transform-box: fill-box;
+    transform-origin: 50% 50%;
+    animation: float 11s ease-in-out infinite;
+}
+
+.graduation {
+    animation-name: float-tilt;
+    animation-duration: 13s;
+    animation-delay: -4s;
+}
+
+.rocket-float {
+    animation-name: rocket-bob;
+    animation-duration: 7s;
+}
+
+.drift-a {
+    animation-duration: 17s;
+    animation-delay: -6s;
+}
+
+.drift-b {
+    animation-duration: 19s;
+    animation-delay: -11s;
+}
+
+@keyframes float {
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes float-tilt {
+    50% {
+        transform: translateY(-9px) rotate(2deg);
+    }
+}
+
+@keyframes rocket-bob {
+    50% {
+        transform: translate(5px, -12px) rotate(-1.5deg);
+    }
+}
+
+.sparkle {
+    transform-box: fill-box;
+    transform-origin: 50% 50%;
+    animation: sparkle 5s ease-in-out infinite;
+}
+
+.sparkle:nth-of-type(2n) {
+    animation-delay: -1.7s;
+}
+
+.sparkle:nth-of-type(3n) {
+    animation-delay: -3.3s;
+}
+
+@keyframes sparkle {
+    50% {
+        transform: scale(0.7) rotate(20deg);
+        opacity: 0.6;
+    }
+}
+
+/* dashes flow along the orbit towards the rocket */
+.orbit path {
+    animation: orbit-flow 3s linear infinite;
+}
+
+@keyframes orbit-flow {
+    to {
+        stroke-dashoffset: -44;
+    }
+}
+
+.tassel-swing {
+    transform-box: view-box;
+    transform-origin: 1794px 150px;
+    animation: swing 4.5s ease-in-out infinite;
+}
+
+@keyframes swing {
+    0%,
+    100% {
+        transform: rotate(5deg);
+    }
+    50% {
+        transform: rotate(-5deg);
+    }
+}
+
+.leaves {
+    transform-box: view-box;
+    transform-origin: 1451px 818px;
+    animation: swing-small 6s ease-in-out infinite;
+}
+
+@keyframes swing-small {
+    0%,
+    100% {
+        transform: rotate(3deg);
+    }
+    50% {
+        transform: rotate(-3deg);
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     .stars-drift,
     .shooting-star,
     .stars .twinkle,
-    .wave {
+    .wave,
+    .planet,
+    .graduation,
+    .rocket-float,
+    .drift-a,
+    .drift-b,
+    .sparkle,
+    .orbit path,
+    .tassel-swing,
+    .leaves {
         animation: none;
     }
 }
