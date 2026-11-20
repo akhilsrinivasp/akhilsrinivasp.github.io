@@ -1,14 +1,14 @@
 <!-- Generic tile in the same style as EducationTile, used by Projects, Skills and About -->
 <template>
   <div class="info-wrap">
-    <div class="info-tile">
+    <div class="info-tile card">
       <component :is="link ? 'a' : 'div'" :href="link || undefined" target="_blank" class="title-link">
-        <h1 class="info-title text-4xl font-medium">
+        <h1 class="info-title">
           {{ title }}
           <Icon v-if="link" name="uil:github" class="title-icon" />
         </h1>
       </component>
-      <h3 v-if="subtitle" class="info-subtitle text-xl font-medium">{{ subtitle }}</h3>
+      <h3 v-if="subtitle" class="info-subtitle">{{ subtitle }}</h3>
       <div v-if="tags && tags.length" class="tag-box">
         <template v-for="(tag, index) in tags">
           <span class="tag">{{ tag }}</span>
@@ -39,16 +39,14 @@ defineProps<{
 }
 
 .info-tile {
-  background-color: #1a202c;
-  border: 1px solid #1a202c;
   width: 100%;
-  box-shadow: rgba(74, 74, 138, 0.25) 0px 50px 100px -20px,
-    rgba(255, 255, 255, 0.3) 0px 30px 60px -30px,
-    rgba(26, 98, 170, 0.35) 0px -2px 6px 0px inset;
-  font-family: "Montserrat", sans-serif;
-  border-radius: 25px;
-  color: #fff;
   transition: background-color 0.2s;
+}
+
+.info-title {
+  font-size: var(--text-9xl);
+  line-height: var(--leading-tight);
+  font-weight: var(--weight-medium);
 }
 
 .title-icon {
@@ -59,6 +57,9 @@ defineProps<{
 }
 
 .info-subtitle {
+  font-size: var(--text-xl);
+  line-height: var(--leading-relaxed);
+  font-weight: var(--weight-medium);
   padding-bottom: 1%;
 }
 
@@ -94,15 +95,15 @@ defineProps<{
   }
 
   .info-tile:hover {
-    background-color: #2d3748;
+    background-color: var(--color-surface-hover);
   }
 
   .title-link:hover .info-title {
-    font-size: 2.7rem;
+    font-size: var(--text-11xl);
   }
 
   .tag {
-    font-size: 1rem;
+    font-size: var(--text-base);
     letter-spacing: 0.09rem;
   }
 }
@@ -118,7 +119,7 @@ defineProps<{
 
   .info-title {
     padding-bottom: 5%;
-    font-size: 1.7rem;
+    font-size: var(--text-5xl);
   }
 
   .info-subtitle {
@@ -126,7 +127,7 @@ defineProps<{
   }
 
   .tag {
-    font-size: 0.9rem;
+    font-size: var(--text-xs);
     letter-spacing: 0.1rem;
     display: block;
     padding: 2%;

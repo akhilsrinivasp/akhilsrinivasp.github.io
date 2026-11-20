@@ -1,13 +1,13 @@
 <template>
     <div class="landing-page grid-container">
-        <div class="image-container p-5">
-            <img class="profile-pic transition-opacity duration-1000" src="~/assets/images/Akhil.png" alt="profile">
+        <div class="image-container">
+            <img class="profile-pic" src="~/assets/images/Akhil.png" alt="profile">
         </div>
-        <div class="text-container space-y-4 flex flex-col">
-            <h1 ref="roles" class="roles">
-                <span class="default-text" ref="defaultText"></span>
-                <span class="typed-text" ref="typedText"></span>
-                <span class="cursor">|</span>
+        <div class="text-container">
+            <h1 class="roles" :aria-label="`I am ${messages.join(', ')}`">
+                <span class="default-text" aria-hidden="true">{{ prefixText }}</span>
+                <span class="typed-text" aria-hidden="true">{{ typedText }}</span>
+                <span class="cursor" aria-hidden="true">|</span>
             </h1>
             <div class="description">
                 Welcome to the digital realm where creativity thrives,
@@ -21,130 +21,24 @@
     </div>
 </template>
   
-<script lang="ts">
-export default {
-    data() {
-        return {
-            isMobile: false,
-            // The typing loop is a single chain, so only one timeout is pending at a time.
-            timer: undefined as ReturnType<typeof setTimeout> | undefined,
-            cursorInterval: undefined as ReturnType<typeof setInterval> | undefined,
-            destroyed: false,
-        };
-    },
-    mounted() {
-        this.initMounted();
-    },
-    beforeUnmount() {
-        // Stop the typing loop and cursor blink when leaving the page.
-        this.destroyed = true;
-        clearTimeout(this.timer);
-        clearInterval(this.cursorInterval);
-        window.removeEventListener("resize", this.updateAlignment);
-    },
-    methods: {
-        initMounted() {
-            this.animateTextTyping();
-            this.blinkCursor();
-            this.updateAlignment();
-            window.addEventListener("resize", this.updateAlignment);
-        },
-        updateAlignment() {
-            this.isMobile = window.innerWidth < 900;
-            const roles: HTMLElement = this.$refs.roles as HTMLElement;
-            if (this.isMobile) {
-                roles.setAttribute("align", "center");
-            } else {
-                roles.removeAttribute("align");
-            }
-        },
-        later(fn: () => void, ms: number) {
-            if (!this.destroyed) this.timer = setTimeout(fn, ms);
-        },
-        animateTextTyping() {
-            const defaultText: string = "I am ";
-            const messages: string[] = [
-                "a Student!",
-                "a Software Engineer!",
-                "a Full Stack Developer!",
-                "a Cloud Enthusiast!",
-                "working with Vue.",
-                "working with Nuxt.",
-                "working with Flask.",
-                "working with MERN Stack.",
-                "working with AWS!",
-            ];
-            const speed: number = 100; 
-            let index = 0;
-
-            const typeNextCharacter = () => {
-                if (index < defaultText.length) {
-                    (this.$refs.defaultText as HTMLElement).textContent += defaultText.charAt(index) as string;
-                    index++;
-                    this.later(typeNextCharacter, speed);
-                } else {
-                    if (messages.length > 0) {
-                        const message: string = messages.shift() as string;
-                        // set a delay of 5 seconds before deleting the message
-                        this.typeMessage(message, () => {
-                            this.later(() => {
-                                this.deleteMessage(message, () => {
-                                    typeNextCharacter();
-                                });
-                            }, 1500);
-                        });
-                        messages.push(message);
-                    }
-                }
-            };
-
-            typeNextCharacter();
-        },
-        typeMessage(message: string, callback: () => void) {
-            const speed :number = 70; // Typing speed (in milliseconds)
-            let index :number = 0;
-
-            const typeNextCharacter :() => void = () => {
-                if (index < message.length) {
-                    (this.$refs.typedText as HTMLElement).textContent += message.charAt(index);
-                    index++;
-                    this.later(typeNextCharacter, speed);
-                } else {
-                    callback();
-                }
-            };
-            typeNextCharacter();
-        },
-        deleteMessage(message: string, callback: () => void) {
-            const speed = 50; // Typing speed (in milliseconds)
-            let index = message.length - 1;
-
-            const deleteNextCharacter = () => {
-                if (index >= 0) {
-                    (this.$refs.typedText as HTMLElement).textContent = message.substring(0, index);
-                    index--;
-                    this.later(deleteNextCharacter, speed);
-                } else {
-                    callback();
-                }
-            };
-
-            deleteNextCharacter();
-        },
-        blinkCursor() {
-            // Started once from initMounted; it used to start a new interval per message.
-            const cursorElement = this.$el.querySelector(".cursor");
-            this.cursorInterval = setInterval(() => {
-                cursorElement.style.opacity = cursorElement.style.opacity === "0" ? "1" : "0";
-            }, 500);
-        },
-    },
-};
+<script setup lang="ts">
+const messages = [
+    "a Student!",
+    "a Software Engineer!",
+    "a Full Stack Developer!",
+    "a Cloud Enthusiast!",
+    "working with Vue.",
+    "working with Nuxt.",
+    "working with Flask.",
+    "working with MERN Stack.",
+    "working with AWS!",
+]
+const { prefixText, typedText } = useTypewriter("I am ", messages)
 </script>
   
 <style scoped>
 .landing-page {
-    background-color: #1a202c;
+    background-color: var(--color-bg);
     height: 100vh;
     justify-content: center;
     align-items: center;
@@ -160,21 +54,37 @@ export default {
     border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
     object-fit: cover;
     border: 5px solid white;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    box-shadow: var(--shadow-glow);
     transition: 0.2s;
     opacity: 0;
     animation: reveal 1s forwards;
     transform: translateX(-100px);
 }
 
+.text-container > :not(:last-child) {
+    margin-bottom: 1rem;
+}
+
 .cursor {
     display: inline-block;
-    color: #ffffff;
+    color: var(--color-text);
     margin-left: 2px;
-    animation: blinkCursor 1s infinite;
+    animation: blinkCursor 1s steps(1) infinite;
+}
+
+@keyframes blinkCursor {
+    50% {
+        opacity: 0;
+    }
+}
+
+.image-container {
+    padding: 1.25rem;
 }
 
 .text-container {
+    display: flex;
+    flex-direction: column;
     opacity: 0;
     animation: reveal 1s forwards;
     transform: translateX(-100px);
@@ -183,9 +93,9 @@ export default {
 }
 
 .description {
-    font-family: 'Montserrat';
+    font-family: var(--font-body);
     opacity: 0;
-    color: #fff;
+    color: var(--color-text);
     animation: reveal 1s forwards;
     opacity: 0;
     transform: translateX(-100px);
@@ -208,7 +118,7 @@ export default {
     }
 
     .landing-page {
-        background-color: #1a202c;
+        background-color: var(--color-bg);
         height: 100vh;
         justify-content: center;
         align-items: center;
@@ -227,7 +137,7 @@ export default {
     .profile-pic:hover {
         border-radius: 80% 20% 70% 30% / 26% 71% 29% 74%;
         width: 300px;
-        box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        box-shadow: var(--shadow-glow-strong);
     }
 
     .roles {
@@ -236,24 +146,24 @@ export default {
     }
 
     .default-text {
-        color: #ffffff;
-        font-size: 1.8rem;
+        color: var(--color-text);
+        font-size: var(--text-6xl);
         /* text-align: center; */
     }
 
     .typed-text {
-        color: #ffffff;
-        font-size: 2.5rem;
+        color: var(--color-text);
+        font-size: var(--text-10xl);
         /* text-align: center; */
     }
 
     .cursor {
-        font-size: 2.5rem;
+        font-size: var(--text-10xl);
     }
 
     .description {
-        font-size: large;
-        font-weight: 500;
+        font-size: var(--text-md);
+        font-weight: var(--weight-medium);
         padding: 0 0 0 20px;
         text-align: justify;
     }
@@ -262,7 +172,7 @@ export default {
 @media (max-width: 1024px) {
 
     .landing-page {
-        background-color: #1a202c;
+        background-color: var(--color-bg);
         height: 100vh;
         padding: 10%;
         background-image: url("~/assets/images/home-bg.png");
@@ -286,7 +196,7 @@ export default {
     .profile-pic:hover {
         border-radius: 80% 20% 70% 30% / 26% 71% 29% 74%;
         width: 300px;
-        box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        box-shadow: var(--shadow-glow-strong);
     }
 
     .text-container {
@@ -299,27 +209,28 @@ export default {
         max-width: 600px;
         padding: 0 20px;
         height: 90px;
+        text-align: center;
     }
 
     .default-text {
-        color: #ffffff;
-        font-size: 1.5rem;
+        color: var(--color-text);
+        font-size: var(--text-4xl);
         /* text-align: center; */
     }
 
     .typed-text {
-        color: #ffffff;
-        font-size: 2.0rem;
+        color: var(--color-text);
+        font-size: var(--text-8xl);
         /* text-align: center; */
     }
 
     .cursor {
-        font-size: 2.0rem;
+        font-size: var(--text-8xl);
     }
 
     .description {
-        font-size: large;
-        font-weight: 500;
+        font-size: var(--text-md);
+        font-weight: var(--weight-medium);
         text-align: justify;
     }
 

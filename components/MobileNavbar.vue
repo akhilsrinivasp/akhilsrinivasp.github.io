@@ -1,11 +1,11 @@
 <template>
     <div>
         <div class="navbar" :class="{ 'navbar-blue': scrolled }">
-            <Icon id="toggle" name="grommet-icons:braille" color="white" @click="toggleDropdown" />
+            <Icon id="toggle" name="grommet-icons:braille" @click="toggleDropdown" />
             <NuxtLink class='home-link' to="/">Akhil</NuxtLink>
         </div>
         <div ref="dropDown" id="dropdown" :style="{ display: dropdownVisible ? 'block' : 'none' }">
-            <Icon id="toggle" name="simple-line-icons:arrow-up" color="black" @click="toggleDropdown" />
+            <Icon id="toggle" name="simple-line-icons:arrow-up" @click="toggleDropdown" />
             <br>
             <NuxtLink class='link' @click="toggleDropdown" to="/">Home</NuxtLink> <br>
             <NuxtLink class='link' @click="toggleDropdown" to="/education">Education</NuxtLink> <br>
@@ -17,53 +17,35 @@
 
             <div class="socials" align="center">
                 <a href="https://www.linkedin.com/in/akhilsrinivasp/" target="_blank">
-                    <Icon name="uil:linkedin" color="black" class="icon-class" />
+                    <Icon name="uil:linkedin" class="icon-class" />
                 </a>
                 <a href="https://www.github.com/akhilsrinivasp/" target="_blank">
-                    <Icon name="uil:github" color="black" class="icon-class" />
+                    <Icon name="uil:github" class="icon-class" />
                 </a>
                 <a href="https://www.instagram.com/akhilsrinivasp/" target="_blank">
-                    <Icon name="uil:instagram" color="black" class="icon-class" />
+                    <Icon name="uil:instagram" class="icon-class" />
                 </a>
                 <a href="https://twitter.com/akhilsrinivasp" target="_blank">
-                    <Icon name="uil:twitter" color="black" class="icon-class" />
+                    <Icon name="uil:twitter" class="icon-class" />
                 </a>
             </div>
             <br>
-            <Icon id="toggle" name="grommet-icons:close" color="black" @click="toggleDropdown" />
+            <Icon id="toggle" name="grommet-icons:close" @click="toggleDropdown" />
         </div>
     </div>
 </template>
-<script>
-export default {
-    data() {
-        return {
-            dropdownVisible: false,
-            scrolled: false,
-        };
-    },
-    mounted() {
-        window.addEventListener('scroll', this.handleScroll);
-    },
-    beforeDestroy() {
-        window.removeEventListener('scroll', this.handleScroll);
-    },
-    methods: {
-        toggleDropdown() {
-            this.dropdownVisible = !this.dropdownVisible;
-        },
-        handleScroll() {
-            this.scrolled = window.scrollY > 40;
-        },
-    },
-}
+<script setup lang="ts">
+const dropdownVisible = ref(false)
+const toggleDropdown = () => { dropdownVisible.value = !dropdownVisible.value }
+const { y } = useWindowScroll()
+const scrolled = computed(() => y.value > 40)
 </script>
 <style>
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #ffffff;
+    color: var(--color-text);
     transition: background-color 0.2s ease-in-out;
 
     opacity: 0;
@@ -79,7 +61,7 @@ export default {
 }
 
 .navbar-blue {
-    background-color: #1a202c;
+    background-color: var(--color-bg);
 }
 
 #toggle {
@@ -101,13 +83,13 @@ br {
     left: 0;
     width: 100%;
     height: 1000px;
-    background-color: #ffffff;
+    background-color: var(--color-surface-inverse);
     z-index: 10;
 
     text-align: center;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 2rem;
-    color: #000000;
+    font-family: var(--font-body);
+    font-size: var(--text-8xl);
+    color: var(--color-text-inverse);
     padding-top: 5%;
     padding-bottom: 5%;
     transition: 0.2s ease-in-out;
@@ -125,7 +107,7 @@ br {
 }
 
 .dropdown-link {
-    color: #000000;
+    color: var(--color-text-inverse);
     transition: 0.2s;
     margin: 0;
     position: relative;
@@ -136,12 +118,12 @@ br {
 }
 
 .home-link {
-    font-family: 'Marck Script', cursive;
-    font-size: 3rem;
-    color: #4fd1c5;
+    font-family: var(--font-script);
+    font-size: var(--text-12xl);
+    color: var(--color-accent);
     margin: 2.5% 6% 0;
     text-align: center;
-    text-shadow: 2px 2px 4px #000000;
+    text-shadow: var(--shadow-text);
     text-decoration: none;
     transition: 0.2s;
 }

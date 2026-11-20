@@ -24,16 +24,16 @@ export default {
             margin: 13%;
         }
         .heading {
-        font-size: 2.7rem;
-        font-weight: 700;
+        font-size: var(--text-11xl);
+        font-weight: var(--weight-bold);
         margin-bottom: 2%;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 500;
+        font-family: var(--font-body);
+        font-weight: var(--weight-medium);
     }
     .para {
-        font-size: 1.5rem;
-        font-weight: 500;
-        font-family: 'Montserrat', sans-serif;
+        font-size: var(--text-4xl);
+        font-weight: var(--weight-medium);
+        font-family: var(--font-body);
     }
     }
     @media (max-width: 1024px) {
@@ -43,16 +43,16 @@ export default {
             margin-top: 25%;
         }  
         .heading {
-        font-size: 2.0rem;
-        font-weight: 700;
+        font-size: var(--text-8xl);
+        font-weight: var(--weight-bold);
         margin-bottom: 2%;
-        font-family: 'Montserrat', sans-serif;
+        font-family: var(--font-body);
         font-weight: 450;
     }
     .para {
-        font-size: 1.0rem;
-        font-weight: 400;
-        font-family: 'Montserrat', sans-serif;
+        font-size: var(--text-base);
+        font-weight: var(--weight-regular);
+        font-family: var(--font-body);
     }
     }
 </style>

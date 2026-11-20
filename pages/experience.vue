@@ -2,14 +2,14 @@
     <!-- https://imgbox.com/ -->
     <div>
         <div class="internship">
-            <h1 class="text-3xl intern-heading">EXPERIENCE</h1>
-            <h1 class="text-5xl intern-heading">INTERN</h1>
-            <div v-for="intern in interns" class="intern-tile">
-                <InternTile :intern="intern" class="items-center" />
+            <h1 class="intern-heading heading-eyebrow">EXPERIENCE</h1>
+            <h1 class="intern-heading heading-section">INTERN</h1>
+            <div v-for="intern in interns" class="intern-tile scroll-reveal">
+                <InternTile :intern="intern" />
             </div>
-            <h1 class="text-5xl intern-heading volunteer-heading">VOLUNTEER</h1>
-            <div v-for="org in volunteering" class="intern-tile">
-                <VolunteerTile :volunteer="org" class="items-center" />
+            <h1 class="intern-heading heading-section volunteer-heading">VOLUNTEER</h1>
+            <div v-for="org in volunteering" class="intern-tile scroll-reveal">
+                <VolunteerTile :volunteer="org" />
             </div>
         </div>
         <br><br>
@@ -40,12 +40,22 @@
     }
 
     .intern-heading {
-        font-family: "Montserrat", sans-serif;
-        font-weight: 400;
+        font-family: var(--font-body);
+        font-weight: var(--weight-regular);
         letter-spacing: 10px;
-        color: #fff;
+        color: var(--color-text);
         margin: 0 0;
         margin-bottom: 0.7%;
+    }
+
+    .heading-eyebrow {
+        font-size: var(--text-7xl);
+        line-height: var(--leading-snug);
+    }
+
+    .heading-section {
+        font-size: var(--text-12xl);
+        line-height: var(--leading-none);
     }
 
     .volunteer-heading {

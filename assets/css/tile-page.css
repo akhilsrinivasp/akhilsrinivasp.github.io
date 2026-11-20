@@ -12,33 +12,6 @@
 	background-attachment: fixed;
 }
 
-.tile-page > div {
-	opacity: 0;
-	animation: tile-reveal 1s forwards;
-}
-
-.tile-page > div:nth-child(odd) {
-	transform: translateX(100px);
-}
-
-.tile-page > div:nth-child(even) {
-	transform: translateX(-100px);
-}
-
-@keyframes tile-reveal {
-	100% {
-		opacity: 1;
-		transform: translateY(0px);
-	}
-}
-
-.tile-page .page-spacer,
-.tile-page .page-spacer-bottom {
-	opacity: 1;
-	animation: none;
-	transform: none;
-}
-
 @media (min-width: 1024px) {
 	.tile-page .page-spacer {
 		margin-top: 8%;
@@ -60,11 +33,11 @@
 	}
 
 	.tile-page .page-title {
-		font-family: 'Montserrat', sans-serif;
-		font-weight: 400;
-		font-size: 2.5rem;
+		font-family: var(--font-body);
+		font-weight: var(--weight-regular);
+		font-size: var(--text-10xl);
 		letter-spacing: 0.4rem;
-		color: #fff;
+		color: var(--color-text);
 		margin: 2% 0 4%;
 		transform: none;
 	}

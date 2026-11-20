@@ -6,8 +6,8 @@
 		<div class="mobile-title">
 			Education
 		</div>
-		<div v-for="edu in education">
-			<EducationTile :education="edu" class="items-center" />
+		<div class="scroll-reveal" v-for="edu in education">
+			<EducationTile :education="edu" />
 		</div>
 		<span class="spacer-bottom">
 
@@ -40,39 +40,6 @@ const education: education_details[] = educationData;
 	background-attachment: fixed;
 }
 
-/* using css nth child property assign animation */
-
-.education>div:nth-child(3) {
-	opacity: 0;
-	animation: reveal 1s forwards;
-	transform: translateX(100px);
-}
-
-.education>div:nth-child(4) {
-	opacity: 0;
-	animation: reveal 1s forwards;
-	transform: translateX(-100px);
-}
-
-.education>div:nth-child(5) {
-	opacity: 0;
-	animation: reveal 1s forwards;
-	transform: translateX(100px);
-}
-
-.education>div:nth-child(6) {
-	opacity: 0;
-	animation: reveal 1s forwards;
-	transform: translateX(-100px);
-}
-
-@keyframes reveal {
-	100% {
-		opacity: 1;
-		transform: translateY(0px);
-	}
-}
-
 @media (min-width: 1024px) {
 	.spacer {
 		margin-top: 8%;
@@ -94,28 +61,16 @@ const education: education_details[] = educationData;
 	}
 
 	.mobile-title {
-		font-family: 'Montserrat', sans-serif;
-		font-weight: 400;
-		font-size: 2.5rem;
+		font-family: var(--font-body);
+		font-weight: var(--weight-regular);
+		font-size: var(--text-10xl);
 		letter-spacing: 0.4rem;
-		color: #fff;
+		color: var(--color-text);
 		margin: 2% 0 4%;
 		padding: 0;
-		/* text-shadow: 2px 2px 4px #000000; */
+		/* text-shadow: var(--shadow-text); */
 		text-decoration: none;
 		transition: 0.2s;
-	}
-
-	.education>div:nth-child(1) {
-		opacity: 0;
-		animation: reveal 1s forwards;
-		transform: translateX(-100px);
-	}
-
-	.education>div:nth-child(2) {
-		opacity: 0;
-		animation: reveal 1s forwards;
-		transform: translateX(-100px);
 	}
 
 }</style>

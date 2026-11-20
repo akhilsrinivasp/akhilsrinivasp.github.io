@@ -2,20 +2,20 @@
 
 <template lang="">
   <div class="tile">
-    <div class="education-tile">
+    <div class="education-tile card">
       <a :href="education.site" target="_blank"
-        ><h1 class="college text-4xl font-medium">
+        ><h1 class="college">
           {{ education.college }}
         </h1></a
       >
       <a :href="education.site" target="_blank"
-        ><h2 class="degree text-2xl font-semibold">
+        ><h2 class="degree">
           {{ education.degree }}
         </h2></a
       >
-      <h3 class="year text-xl font-medium">{{ education.year }}</h3>
-      <h4 class="grade text-xl font-medium">{{ education.grade }}</h4>
-      <h4 class="course-title text-xl font-medium">Courses (Major):</h4>
+      <h3 class="year">{{ education.year }}</h3>
+      <h4 class="grade">{{ education.grade }}</h4>
+      <h4 class="course-title">Courses (Major):</h4>
       <div class="course-box">
         <template v-for="(course, index) in education.courses">
           <span class="courses">{{ course }}</span>
@@ -42,15 +42,26 @@ const { education: education } = defineProps(["education"]);
 }
 
 .education-tile {
-  background-color: #1a202c;
-  border: 1px solid #1a202c;
   width: 100%;
-  box-shadow: rgba(74, 74, 138, 0.25) 0px 50px 100px -20px,
-    rgba(255, 255, 255, 0.3) 0px 30px 60px -30px,
-    rgba(26, 98, 170, 0.35) 0px -2px 6px 0px inset;
-  font-family: "Montserrat", sans-serif;
-  border-radius: 25px;
-  color: #fff;
+}
+
+/* Base heading sizes; the media queries below adjust them per breakpoint. */
+:where(.education-tile) .college {
+  font-size: var(--text-9xl);
+  line-height: var(--leading-tight);
+  font-weight: var(--weight-medium);
+}
+
+:where(.education-tile) .degree {
+  font-size: var(--text-4xl);
+  line-height: var(--leading-normal);
+  font-weight: var(--weight-semibold);
+}
+
+:where(.education-tile) :is(.year, .grade, .course-title) {
+  font-size: var(--text-xl);
+  line-height: var(--leading-relaxed);
+  font-weight: var(--weight-medium);
 }
 
 @media (min-width: 1024px) {
@@ -61,7 +72,7 @@ const { education: education } = defineProps(["education"]);
   }
 
   .courses {
-    font-size: 1rem;
+    font-size: var(--text-base);
     letter-spacing: 0.09rem;
   }
 
@@ -89,15 +100,15 @@ const { education: education } = defineProps(["education"]);
   }
   
   .education-tile:hover {
-    background-color: #2d3748;
+    background-color: var(--color-surface-hover);
   }
 
   .college:hover {
-    font-size: 2.7rem;
+    font-size: var(--text-11xl);
   }
   
   .degree:hover {
-    font-size: 1.7rem;
+    font-size: var(--text-5xl);
   }
 }
 
@@ -110,7 +121,7 @@ const { education: education } = defineProps(["education"]);
   }
 
   .courses {
-    font-size: 0.9rem;
+    font-size: var(--text-xs);
     letter-spacing: 0.1rem;
     display: block;
     padding: 2%;
@@ -118,13 +129,13 @@ const { education: education } = defineProps(["education"]);
 
   .college {
     padding-bottom: 5%;
-    font-size: 1.7rem;
+    font-size: var(--text-5xl);
   }
 
   .degree {
     padding-bottom: 5%;
-    font-size: 1.3rem;
-    font-weight: 600;
+    font-size: var(--text-2xl);
+    font-weight: var(--weight-semibold);
   }
 
   .year {
@@ -133,7 +144,7 @@ const { education: education } = defineProps(["education"]);
 
   .grade {
     padding-bottom: 4%;
-    font-size: 1.5rem;
+    font-size: var(--text-4xl);
   }
 
   .dot {
@@ -142,7 +153,7 @@ const { education: education } = defineProps(["education"]);
 
   .course-title {
     padding-bottom: 1%;
-    font-size: 1.4rem;
+    font-size: var(--text-3xl);
   }
 }
 </style>

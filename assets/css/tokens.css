@@ -1,0 +1,65 @@
+/* Design tokens: the one place for colours, type, shadows and radii.
+   Components reference these via var(--…) instead of hardcoding values. */
+:root {
+  /* ---------- Colour palette ---------- */
+  --color-bg: #1a202c;              /* page background, cards, scrolled header */
+  --color-surface-hover: #2d3748;   /* card background on hover */
+  --color-text: #fff;               /* default text on dark */
+  --color-text-soft: #d8d8d8;       /* desktop nav links */
+  --color-text-muted: #cbd5e0;      /* secondary lines (e.g. certificate issuer) */
+  --color-text-inverse: #000;       /* text on the white mobile menu */
+  --color-surface-inverse: #fff;    /* mobile menu, logo plates, hovered experience tiles */
+  --color-accent: #4fd1c5;          /* "Akhil" wordmark, cursor spotlight */
+
+  /* ---------- Typography ---------- */
+  --font-body: 'Montserrat', sans-serif;
+  --font-script: 'Marck Script', cursive;
+  --font-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', Arial, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* Font-size scale, smallest to largest. These are the exact sizes the site already
+     uses; neighbours like 1.2/1.25/1.3rem could be merged later as a design change. */
+  --text-xs: 0.9rem;
+  --text-sm: 0.95rem;
+  --text-base: 1rem;
+  --text-md: 1.125rem;
+  --text-lg: 1.2rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.3rem;
+  --text-3xl: 1.4rem;
+  --text-4xl: 1.5rem;
+  --text-5xl: 1.7rem;
+  --text-6xl: 1.8rem;
+  --text-7xl: 1.875rem;
+  --text-8xl: 2rem;
+  --text-9xl: 2.25rem;
+  --text-10xl: 2.5rem;
+  --text-11xl: 2.7rem;
+  --text-12xl: 3rem;
+  --text-13xl: 3.5rem;
+  --text-14xl: 4rem;
+
+  /* Line heights paired with the heading sizes */
+  --leading-none: 1;
+  --leading-tight: calc(2.5 / 2.25);
+  --leading-snug: 1.2;
+  --leading-normal: calc(2 / 1.5);
+  --leading-relaxed: 1.4;
+  --leading-body: 1.5;
+
+  /* ---------- Surfaces ---------- */
+  --radius-card: 25px;
+  --shadow-card: rgba(74, 74, 138, 0.25) 0px 50px 100px -20px,
+    rgba(255, 255, 255, 0.3) 0px 30px 60px -30px,
+    rgba(26, 98, 170, 0.35) 0px -2px 6px 0px inset;
+  --shadow-bar: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-glow: 0 0 10px rgba(255, 255, 255, 0.5);
+  --shadow-glow-strong: 0 0 20px rgba(255, 255, 255, 0.5);
+  --shadow-text: 2px 2px 4px #000;
+  --gradient-nav: linear-gradient(135deg, #16213E 0%, #274156 30%, #1C2E4A 70%, #0E1E34 100%);
+}

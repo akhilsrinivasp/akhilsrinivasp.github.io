@@ -28,7 +28,7 @@ export default {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    color: #fff;
+    color: var(--color-text);
 }
 
 .hide {
@@ -36,7 +36,7 @@ export default {
     animation: reveal 0.3s forwards;
     transform: translateY(100px);
 
-    font-size: 3rem;
+    font-size: var(--text-12xl);
     margin: 0 0 25px 0;
 }
 

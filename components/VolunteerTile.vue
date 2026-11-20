@@ -1,15 +1,15 @@
 <!-- Volunteer Tile: mirrors InternTile so both experience sections look the same -->
 <template>
-    <div class="tile">
+    <div class="tile card">
         <div class="volunteer-tile" @mouseover="hover = true" @mouseleave="hover = false">
-            <div class="company-logo-container ease duration-500">
-                <a :href="volunteer.link" target="_blank" class="company-logo ease duration-500"
+            <div class="company-logo-container">
+                <a :href="volunteer.link" target="_blank" class="company-logo"
                     :style="volunteer.logoBg ? { backgroundColor: volunteer.logoBg } : undefined">
                     <img :src="useImage(volunteer.logo)" :alt="`${volunteer.organisation} logo`" />
                 </a>
             </div>
             <div class="details-container">
-                <div class="company text-2xl">
+                <div class="company company-org">
                     <a :href="volunteer.link" target="_blank"><h1 class="company-name">{{ volunteer.organisation }}</h1></a>
                 </div>
                 <div class="description" v-if="hover">
@@ -22,7 +22,7 @@
                     <h3 class="year-name">{{ volunteer.period }}</h3>
                 </div>
                 <div class="role" v-for="role in volunteer.roles">
-                    <h2 class="role-name text-xl">{{ role.role }} <span class="role-duration">| {{ role.duration }}</span></h2>
+                    <h2 class="role-name">{{ role.role }} <span class="role-duration">| {{ role.duration }}</span></h2>
                     <p class="work-text" v-if="hover">{{ role.work }}</p>
                 </div>
                 <div class="work" v-if="hover" v-for="item in volunteer.highlights">
@@ -37,23 +37,26 @@ const { volunteer } = defineProps(["volunteer"]);
 const hover = ref(false)
 </script>
 <style scoped>
+.company-logo-container,
+.company-logo {
+    transition-duration: 0.5s;
+}
+
+.company-org {
+    font-size: var(--text-4xl);
+    line-height: var(--leading-normal);
+}
+
 .tile {
-    background-color: #1a202c;
-    border: 1px solid #1a202c;
     width: 100%;
-    box-shadow: rgba(74, 74, 138, 0.25) 0px 50px 100px -20px, rgba(255, 255, 255, 0.3) 0px 30px 60px -30px, rgba(26, 98, 170, 0.35) 0px -2px 6px 0px inset;
-    font-family: "Montserrat", sans-serif;
-    border-radius: 25px;
-    color: #fff;
     margin: 2% 0 4%;
     transition: all 0.5s ease;
     animation: reveal 0.5ms forwards;
 }
 
 .tile:hover {
-    background-color: #fff;
-    color: #1a202c;
-    border: 1px solid #1a202c;
+    background-color: var(--color-surface-inverse);
+    color: var(--color-bg);
     transform: scale(1.05);
 }
 
@@ -70,7 +73,7 @@ const hover = ref(false)
     border-radius: 25%;
     padding: 25px;
     margin-top: 28px;
-    background-color: #fff;
+    background-color: var(--color-surface-inverse);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -98,12 +101,14 @@ const hover = ref(false)
 }
 
 .role-name {
-    font-weight: 600;
+    font-size: var(--text-xl);
+    line-height: var(--leading-relaxed);
+    font-weight: var(--weight-semibold);
 }
 
 .role-duration {
-    font-weight: 400;
-    font-size: 1rem;
+    font-weight: var(--weight-regular);
+    font-size: var(--text-base);
 }
 
 .work-text {

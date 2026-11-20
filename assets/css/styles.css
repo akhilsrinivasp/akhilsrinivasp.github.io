@@ -1,22 +1,103 @@
-@import url('https://fonts.googleapis.com/css2?family=Marck+Script&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* Global styles: page chrome, shared card surface, and site-wide motion. */
 
 body {
-  background-color: #1a202c;
-  /* background-color: #fff; */
-  font-family: 'Montserrat';
+  background-color: var(--color-bg);
+  /* tiles slide in from the sides; never let that create a horizontal scrollbar */
+  overflow-x: clip;
+  font-family: var(--font-body);
 }
 
-.fade-enter-active,
-.fade-leave-active {
-    transition: opacity 0.2s, transform 0.2s;
+/* Shared card surface used by every tile (education, projects, skills, about,
+   experience, contact). Components add their own sizing and layout on top. */
+.card {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-bg);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  color: var(--color-text);
+  font-family: var(--font-body);
 }
 
-.fade-enter,
-.fade-leave-to {
+/* The reset makes every svg display:block; keep icons inline. */
+svg.iconify {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* ---------- Scroll-driven reveal ----------
+   Tiles slide in as they scroll into view, driven by the browser's scroll timeline
+   (no JS, no IntersectionObserver). Browsers without animation-timeline fall back to
+   the old one-shot reveal on page load. */
+@keyframes scroll-reveal {
+  from {
     opacity: 0;
-    transform: translateY(-100px);
+    transform: translateX(var(--reveal-x, 0)) translateY(40px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
-/* * {
-  cursor: none !important;
-} */
+.scroll-reveal {
+  animation: scroll-reveal 1s cubic-bezier(0.075, 0.82, 0.165, 1) both;
+}
+
+.scroll-reveal:nth-child(odd) {
+  --reveal-x: 100px;
+}
+
+.scroll-reveal:nth-child(even) {
+  --reveal-x: -100px;
+}
+
+@media (max-width: 640px) {
+  .scroll-reveal:nth-child(odd) {
+    --reveal-x: 40px;
+  }
+
+  .scroll-reveal:nth-child(even) {
+    --reveal-x: -40px;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .scroll-reveal {
+    animation-timing-function: ease-out;
+    animation-duration: auto;
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
+  }
+}
+
+/* ---------- Page transitions (View Transitions API) ---------- */
+::view-transition-old(root) {
+  animation: vt-out 0.25s ease-in both;
+}
+
+::view-transition-new(root) {
+  animation: vt-in 0.4s cubic-bezier(0.075, 0.82, 0.165, 1) both;
+}
+
+@keyframes vt-out {
+  to {
+    opacity: 0;
+    transform: scale(0.98);
+    filter: blur(4px);
+  }
+}
+
+@keyframes vt-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal,
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
+  }
+}
